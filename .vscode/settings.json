@@ -1,0 +1,18 @@
+{
+  // 不用 VSCode 自带格式化
+  "editor.formatOnSave": false,
+
+  // 禁用 Prettier（只针对当前项目）
+  "prettier.enable": false,
+
+  // 保存时用 ESLint 自动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+
+  // 指定 ESLint 处理的文件类型
+  "eslint.validate": ["javascript", "typescript", "vue"],
+
+  // 防止被其他 formatter 抢走
+  "editor.defaultFormatter": null
+}
