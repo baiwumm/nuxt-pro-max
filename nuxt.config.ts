@@ -11,10 +11,11 @@ export default defineNuxtConfig({
         },
       ],
     },
+    pageTransition: { name: 'page', mode: 'out-in' },
   },
   modules: ['@nuxt/ui'],
   css: ['~/assets/css/main.css'],
   ui: {
-    fonts: false
-  }
+    fonts: false,
+  },
 })
