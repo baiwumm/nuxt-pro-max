@@ -15,4 +15,14 @@ export default defineNuxtPlugin(() => {
       appConfig.ui.colors.primary = appStore.primaryColor
     }
   })
+
+  watch(() => appStore.radius, () => {
+    const root = document.documentElement
+    root.style.setProperty(
+      '--ui-radius',
+      `${appStore.radius}rem`,
+    )
+  }, {
+    immediate: true,
+  })
 })

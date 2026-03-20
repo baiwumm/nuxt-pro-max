@@ -26,7 +26,7 @@ function handleColorChange(color: string) {
 <template>
   <div class="flex flex-col gap-2">
     <div class="font-bold text-muted text-xs">
-      Primary
+      Primary Color
     </div>
     <div class="grid grid-cols-3 gap-1.5">
       <UButton color="neutral" size="sm" :variant="blackAsPrimary ? 'subtle' : 'outline'" class="capitalize ring-default rounded-sm text-xs" label="black" @click="setBlackAsPrimary(true)">
