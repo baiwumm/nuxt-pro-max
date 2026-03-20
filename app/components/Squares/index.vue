@@ -23,15 +23,7 @@ const props = withDefaults(defineProps<Props>(), {
   squareSize: 40,
   hoverFillColor: '#222',
 })
-const colorMode = useColorMode()
-const isDark = computed({
-  get() {
-    return colorMode.value === 'dark'
-  },
-  set(_isDark) {
-    colorMode.preference = _isDark ? 'dark' : 'light'
-  },
-})
+const appStore = useAppStore()
 
 const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef')
 const requestRef = ref<number | null>(null)
@@ -90,8 +82,8 @@ function drawGrid() {
     canvas.height / 2,
     Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2,
   )
-  gradient.addColorStop(0, isDark.value ? 'rgba(0, 0, 0, 0)' : 'rgba(255, 255, 255, 0)')
-  gradient.addColorStop(1, isDark.value ? '#0b0b0b' : '#fff')
+  gradient.addColorStop(0, appStore.isDark ? 'rgba(0, 0, 0, 0)' : 'rgba(255, 255, 255, 0)')
+  gradient.addColorStop(1, appStore.isDark ? '#0b0b0b' : '#fff')
 
   ctx.fillStyle = gradient
   ctx.fillRect(0, 0, canvas.width, canvas.height)

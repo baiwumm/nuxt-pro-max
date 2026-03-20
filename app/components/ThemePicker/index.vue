@@ -17,6 +17,7 @@ const open = ref(false)
     <template #content>
       <div class="flex flex-col gap-4">
         <ThemePickerPrimaryColor />
+        <ThemePickerColorMode />
       </div>
     </template>
   </UPopover>

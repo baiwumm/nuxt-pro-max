@@ -2,15 +2,40 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-03-20 13:43:10
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-20 13:57:25
+ * @LastEditTime: 2026-03-20 15:13:38
  * @Description: 动态设置 favicon
  */
+import colors from 'tailwindcss/colors'
 import { onMounted, watch } from 'vue'
+
 import FaviconSvg from '../../public/favicon.svg?raw'
 
 export function useFaviconFromTheme() {
   const colorMode = useColorMode()
+  const appStore = useAppStore()
 
+  // 🎨 获取真实颜色（完全不依赖 CSS 变量）
+  function getPrimaryColor(): string {
+    // 👇 黑白模式优先
+    if (appStore.blackAsPrimary) {
+      return appStore.isDark ? '#ffffff' : '#000000'
+    }
+
+    // 👇 Tailwind 色板
+    const color = appStore.primaryColor as keyof typeof colors
+    const palette = colors[color]
+
+    // 防御（避免 black/white 这种非对象）
+    if (typeof palette === 'object') {
+      return appStore.isDark
+        ? (palette[400] as string)
+        : (palette[500] as string)
+    }
+
+    return '#00dc82' // fallback
+  }
+
+  // 🎯 生成 SVG
   function generateFaviconSvg(color: string) {
     const parser = new DOMParser()
     const doc = parser.parseFromString(FaviconSvg, 'image/svg+xml')
@@ -23,38 +48,30 @@ export function useFaviconFromTheme() {
     return new XMLSerializer().serializeToString(svg)
   }
 
+  // 🔄 更新 favicon
   function updateFavicon() {
-    const root = document.documentElement
-    const color = getComputedStyle(root).getPropertyValue('--ui-primary').trim() || '#00dc82'
+    const color = getPrimaryColor()
+
     const svg = generateFaviconSvg(color)
     const encoded = `data:image/svg+xml,${encodeURIComponent(svg)}`
+
     useFavicon(encoded)
   }
 
-  function setupMutationObserver() {
-    const styleTag = document.getElementById('nuxt-ui-colors')
-    if (!styleTag)
-      return
-
-    const observer = new MutationObserver(() => {
-      updateFavicon()
-    })
-
-    observer.observe(styleTag, {
-      characterData: true,
-      subtree: true,
-      childList: true,
-    })
-  }
-
+  // 👀 监听所有主题变化
   onMounted(() => {
-    watch(colorMode, () => {
-      updateFavicon()
-    }, {
-      immediate: true,
-      flush: 'post',
-    })
-
-    setupMutationObserver()
+    watch(
+      () => [
+        colorMode.value,
+        appStore.primaryColor,
+        appStore.blackAsPrimary,
+      ],
+      () => {
+        updateFavicon()
+      },
+      {
+        immediate: true,
+      },
+    )
   })
 }

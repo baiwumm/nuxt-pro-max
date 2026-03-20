@@ -20,3 +20,12 @@ export const OAUTH_PROVIDES = Enum({
   GITHUB: { value: 'github', label: 'Github', icon: 'simple-icons:github' },
   GOOGLE: { value: 'google', label: 'Google', icon: 'material-icon-theme:google' },
 })
+
+/**
+ * @description: Color Mode
+ */
+export const COLOR_MODES = Enum({
+  LIGHT: { value: 'light', label: 'light', icon: 'lucide:sun' },
+  DARK: { value: 'dark', label: 'dark', icon: 'lucide:moon' },
+  SYSTEM: { value: 'system', label: 'system', icon: 'lucide:monitor' },
+})
