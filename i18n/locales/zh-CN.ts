@@ -2,7 +2,7 @@ export default defineI18nLocale(async () => {
   return {
     pages: {
       login: {
-        title: '登录',
+        title: '用户登录',
         description: '请在下方输入您的电子邮件，以登录您的账户',
         submit: '登录',
         email: {

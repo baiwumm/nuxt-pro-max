@@ -20,6 +20,8 @@ useHead({
     dir,
   },
 })
+
+useFaviconFromTheme()
 </script>
 
 <template>
