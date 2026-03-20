@@ -16,9 +16,9 @@ export const RESPONSE_CODE = Enum({
  * @description: OAuth Provides
  */
 export const OAUTH_PROVIDES = Enum({
-  WECHAT: { value: 'wechat', label: 'Wechat', icon: 'simple-icons:wechat' },
-  GITHUB: { value: 'github', label: 'Github', icon: 'simple-icons:github' },
-  GOOGLE: { value: 'google', label: 'Google', icon: 'material-icon-theme:google' },
+  WECHAT: { value: 'wechat', label: 'wechat', icon: 'simple-icons:wechat' },
+  GITHUB: { value: 'github', label: 'github', icon: 'simple-icons:github' },
+  GOOGLE: { value: 'google', label: 'google', icon: 'material-icon-theme:google' },
 })
 
 /**
@@ -28,4 +28,12 @@ export const COLOR_MODES = Enum({
   LIGHT: { value: 'light', label: 'light', icon: 'lucide:sun' },
   DARK: { value: 'dark', label: 'dark', icon: 'lucide:moon' },
   SYSTEM: { value: 'system', label: 'system', icon: 'lucide:monitor' },
+})
+
+/**
+ * @description: Locales
+ */
+export const I18N_LOCALES = Enum({
+  ZH_CN: { value: 'zh-CN', label: '简体中文', icon: '🇨🇳' },
+  ENGLISH: { value: 'en', label: 'English', icon: '🇺🇸' },
 })

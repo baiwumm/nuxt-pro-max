@@ -102,7 +102,7 @@ async function onOAuth(provider: typeof OAUTH_PROVIDES.valueType) {
         <USeparator label="or" />
         <div class="grid grid-cols-3 gap-2">
           <UButton v-for="{ value, label, raw } in OAUTH_PROVIDES.items" :key="value" :icon="raw.icon" color="neutral" variant="outline" class="justify-center" @click="onOAuth(value)">
-            {{ label }}
+            {{ $t(`pages.login.${label}`) }}
           </UButton>
         </div>
         <div class="flex justify-center items-center text-xs">

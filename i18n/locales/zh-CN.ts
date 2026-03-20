@@ -20,9 +20,20 @@ export default defineI18nLocale(async () => {
         signUp: '立即注册',
         signUpText: '还没有账户吗？',
         error: '登录失败',
+        wechat: '微信',
+        github: 'Github',
+        google: '谷歌',
       },
       dashboard: {
         title: '控制台',
+      },
+    },
+    components: {
+      themePicker: {
+        primaryColor: '主题色',
+        colorMode: '主题模式',
+        locales: '语言',
+        radius: '圆角',
       },
     },
   }

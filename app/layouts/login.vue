@@ -15,9 +15,6 @@ const appStore = useAppStore()
     </div>
     <div class="fixed z-1 top-5 right-5 flex gap-2 items-center">
       <ThemePicker />
-      <ClientOnly>
-        <LocaleSelect />
-      </ClientOnly>
     </div>
     <slot />
   </div>

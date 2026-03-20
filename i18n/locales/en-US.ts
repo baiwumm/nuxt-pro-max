@@ -20,9 +20,20 @@ export default defineI18nLocale(async () => {
         signUp: 'Sign Up',
         signUpText: 'Don\'t have an account?',
         error: 'Login Failed',
+        wechat: 'Wechat',
+        github: 'Github',
+        google: 'Google',
       },
       dashboard: {
         title: 'Dashboard',
+      },
+    },
+    components: {
+      themePicker: {
+        primaryColor: 'PrimaryColor',
+        colorMode: 'ColorMode',
+        locales: 'Locales',
+        radius: 'Radius',
       },
     },
   }
