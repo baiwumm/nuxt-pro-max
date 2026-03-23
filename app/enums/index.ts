@@ -16,9 +16,9 @@ export const RESPONSE_CODE = Enum({
  * @description: OAuth Provides
  */
 export const OAUTH_PROVIDES = Enum({
-  WECHAT: { value: 'wechat', label: 'wechat', icon: 'simple-icons:wechat' },
   GITHUB: { value: 'github', label: 'github', icon: 'simple-icons:github' },
   GOOGLE: { value: 'google', label: 'google', icon: 'material-icon-theme:google' },
+  VERCEL: { value: 'vercel', label: 'vercel', icon: 'simple-icons:vercel' },
 })
 
 /**

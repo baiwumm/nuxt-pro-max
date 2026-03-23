@@ -1,5 +1,3 @@
-import { placeholder } from 'drizzle-orm'
-
 export default defineI18nLocale(async () => {
   return {
     auth: {
@@ -38,10 +36,11 @@ export default defineI18nLocale(async () => {
         forgot: '忘记密码？',
       },
       provide: {
-        wechat: '微信',
         github: 'Github',
         google: '谷歌',
+        vercel: 'Vercel',
       },
+      waitLogin: '正在登录中...',
     },
     pages: {
       dashboard: {

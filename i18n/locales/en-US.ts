@@ -36,10 +36,11 @@ export default defineI18nLocale(async () => {
         forgot: 'Forgot your password?',
       },
       provide: {
-        wechat: 'Wechat',
         github: 'Github',
         google: 'Google',
+        vercel: 'Vercel',
       },
+      waitLogin: 'Logging in...',
     },
     pages: {
       dashboard: {

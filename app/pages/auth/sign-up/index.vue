@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { FormSubmitEvent } from '@nuxt/ui'
 import z from 'zod'
-import { authClient } from '@/utils/auth-client'
 import LoginProvides from '../components/LoginProvides.vue'
 
 definePageMeta({
@@ -9,9 +8,11 @@ definePageMeta({
 })
 
 const toast = useToast()
+const { $authClient } = useNuxtApp()
 
 const loading = ref(false)
 const show = ref(false)
+const formRef = useTemplateRef('formRef')
 
 const schema = z.object({
   name: z.string().min(1, $t('auth.name.placeholder')),
@@ -21,11 +22,21 @@ const schema = z.object({
 
 type Schema = z.output<typeof schema>
 
-const state = refManualReset({
+const initialState: Schema = {
   name: '',
   email: '',
   password: '',
-})
+}
+
+const state = reactive<Schema>({ ...initialState })
+
+/**
+   * @description: 清空表单
+   */
+function resetForm() {
+  formRef.value?.clear()
+  Object.assign(state, initialState)
+}
 
 /**
  * @description: 注册提交
@@ -34,7 +45,10 @@ const state = refManualReset({
 async function onSubmit(payload: FormSubmitEvent<Schema>) {
   const formData = payload.data
   loading.value = true
-  const { error } = await authClient.signUp.email(formData).finally(() => {
+  const { error } = await $authClient.signUp.email({
+    ...formData,
+    callbackURL: '/dashboard',
+  }).finally(() => {
     loading.value = false
   })
   if (error) {
@@ -50,7 +64,7 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
       description: $t('auth.signUp.verifyEmailSentDesc'),
       color: 'success',
     })
-    state.reset()
+    resetForm()
   }
 }
 </script>
@@ -67,7 +81,7 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
           description: 'text-sm',
         }"
       >
-        <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+        <UForm ref="formRef" :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
           <UFormField :label="$t('auth.name.label')" name="name" required>
             <UInput v-model="state.name" :placeholder="$t('auth.name.placeholder')" class="w-full" />
           </UFormField>

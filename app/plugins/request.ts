@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-03-19 11:10:04
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-19 14:19:41
+ * @LastEditTime: 2026-03-23 13:52:05
  * @Description: $fetch 请求封装
  */
 import type { ApiResponse } from '@/types/common'
@@ -10,7 +10,6 @@ import { defineNuxtPlugin, navigateTo, useCookie, useRuntimeConfig } from '#app'
 import { BProgress } from '@bprogress/core'
 import { ofetch } from 'ofetch'
 import { RESPONSE_CODE } from '@/enums'
-import { isSuccess } from '@/utils'
 
 let requestCount = 0
 

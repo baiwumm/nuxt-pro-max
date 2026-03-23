@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { FormSubmitEvent } from '@nuxt/ui'
 import z from 'zod'
-import { authClient } from '@/utils/auth-client'
 import LoginProvides from '../components/LoginProvides.vue'
 
 definePageMeta({
   layout: 'login',
 })
+
+const { $authClient } = useNuxtApp()
 
 const toast = useToast()
 
@@ -34,7 +35,7 @@ const state = reactive({
 async function onSubmit(payload: FormSubmitEvent<Schema>) {
   const formData = payload.data
   loading.value = true
-  const { error } = await authClient.signIn.email({
+  const { error } = await $authClient.signIn.email({
     ...formData,
     callbackURL: '/dashboard',
   }).finally(() => {
@@ -68,23 +69,24 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
           </UFormField>
 
           <UFormField :label="$t('auth.password.label')" name="password" required>
-            <UInput v-model="state.password" :type="show ? 'text' : 'password'" :placeholder="$t('auth.password.placeholder')" class="w-full" />
+            <UInput v-model="state.password" :type="show ? 'text' : 'password'" :placeholder="$t('auth.password.placeholder')" class="w-full">
+              <template #trailing>
+                <UButton
+                  color="neutral"
+                  variant="link"
+                  size="sm"
+                  :icon="show ? 'i-lucide-eye-off' : 'i-lucide-eye'"
+                  :aria-label="show ? 'Hide password' : 'Show password'"
+                  :aria-pressed="show"
+                  aria-controls="password"
+                  @click="show = !show"
+                />
+              </template>
+            </UInput>
             <template #hint>
               <ULink as="button">
                 {{ $t('auth.password.forgot') }}
               </ULink>
-            </template>
-            <template #trailing>
-              <UButton
-                color="neutral"
-                variant="link"
-                size="sm"
-                :icon="show ? 'i-lucide-eye-off' : 'i-lucide-eye'"
-                :aria-label="show ? 'Hide password' : 'Show password'"
-                :aria-pressed="show"
-                aria-controls="password"
-                @click="show = !show"
-              />
             </template>
           </UFormField>
           <UCheckbox v-model="state.rememberMe" name="rememberMe" :label="$t('auth.login.rememberMe')" />
