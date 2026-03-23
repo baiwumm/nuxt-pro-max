@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.1.0](https://github.com/baiwumm/nuxt-pro-max/compare/1.0.0...1.1.0) (2026-03-23)
+
+### ✨ Features | 新功能
+
+* 完成登录页的登录逻辑 ([6220083](https://github.com/baiwumm/nuxt-pro-max/commit/62200831004317065be50c102d24557d218ef82e))
+* 完成登录页及基础信息配置 ([671047a](https://github.com/baiwumm/nuxt-pro-max/commit/671047a9d0f3d69a011b508de462c3f26e6e3b69))
+* 完成登录注册页面的相关逻辑 ([90c9374](https://github.com/baiwumm/nuxt-pro-max/commit/90c9374608e10ff05f396c4a985997cf43e10963))
+* 完善项目基础配置 ([747d235](https://github.com/baiwumm/nuxt-pro-max/commit/747d235bdd2bed9f8e424513f2d8c4936986b18b))
+* 完善注册页面逻辑 ([c2b0ae5](https://github.com/baiwumm/nuxt-pro-max/commit/c2b0ae5e42bbd6cfb396600021d7a41f288384f5))
+* 新增 @better-auth/infra 包 ([49a7cac](https://github.com/baiwumm/nuxt-pro-max/commit/49a7cac936c6f38378af6da45193e1fbc1484736))
+* 新增 @nuxtjs/i18n 包，完成国际化基本配置 ([ff3a9b1](https://github.com/baiwumm/nuxt-pro-max/commit/ff3a9b102f4bef6c70a296c33fdfd5c06dad8a75))
+* 新增 @vercel/analytics 统计 ([e887aca](https://github.com/baiwumm/nuxt-pro-max/commit/e887acac020da7d871eed3eccaff9ed773a9ba42))
+* 新增 ColorMode 主题切换组件 ([cdaf7ea](https://github.com/baiwumm/nuxt-pro-max/commit/cdaf7eab6e22dc14172e71aebb427b41f87e803c))
+* 新增 Locales 语言设置组件，完善多语言配置 ([c013f2e](https://github.com/baiwumm/nuxt-pro-max/commit/c013f2e136490f1c43941b1ddab0cd4def36fab1))
+* 新增 Pinia ，完成主题色设置的功能 ([8a9624c](https://github.com/baiwumm/nuxt-pro-max/commit/8a9624ce55011026be7168b98e2054e1d2f583c9))
+* 新增 Radius 配置 ([c0da20f](https://github.com/baiwumm/nuxt-pro-max/commit/c0da20fdba81706c1d623147e9ad185772f83131))
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 修复 useFetch 引发的错误 ([fbb288b](https://github.com/baiwumm/nuxt-pro-max/commit/fbb288bed60aa7aa5651c7d1086a9ff201850c54))
+
 ## 1.0.0 (2026-03-17)
 
 ### ✨ Features | 新功能
