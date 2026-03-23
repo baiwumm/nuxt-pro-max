@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     'nuxt-resend',
     '@vueuse/nuxt',
     '@pinia/nuxt',
+    '@vercel/analytics',
   ],
   css: ['~/assets/css/main.css'],
   ui: {
