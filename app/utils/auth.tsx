@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-03-18 17:01:16
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-20 18:02:25
+ * @LastEditTime: 2026-03-23 09:14:06
  * @Description: BetterAuth 实例
  */
 import { betterAuth } from 'better-auth'
@@ -10,6 +10,7 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { username } from 'better-auth/plugins'
 import { db } from '@/db/drizzle'
 import * as schema from "@/db/schema";
+import { dash } from "@better-auth/infra";
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -52,5 +53,6 @@ export const auth = betterAuth({
   },
   plugins: [
     username(),
+    dash()
   ],
 })

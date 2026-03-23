@@ -11,6 +11,9 @@ importers:
       '@better-auth/drizzle-adapter':
         specifier: ^1.5.5
         version: 1.5.5(@better-auth/core@1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0))(@better-auth/utils@0.3.1)(drizzle-orm@0.45.1(@neondatabase/serverless@1.0.2)(@types/pg@8.18.0)(kysely@0.28.12))
+      '@better-auth/infra':
+        specifier: ^0.1.12
+        version: 0.1.12(@better-auth/core@1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0))(@better-auth/sso@1.5.6(@better-auth/core@1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0))(@better-auth/utils@0.3.1)(better-auth@1.5.5(drizzle-kit@0.31.10)(drizzle-orm@0.45.1(@neondatabase/serverless@1.0.2)(@types/pg@8.18.0)(kysely@0.28.12))(mongodb@7.1.0(socks@2.8.7))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue@3.5.30(typescript@5.9.3)))(better-call@1.3.2(zod@4.3.6)))(better-auth@1.5.5(drizzle-kit@0.31.10)(drizzle-orm@0.45.1(@neondatabase/serverless@1.0.2)(@types/pg@8.18.0)(kysely@0.28.12))(mongodb@7.1.0(socks@2.8.7))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue@3.5.30(typescript@5.9.3)))(zod@4.3.6)
       '@bprogress/core':
         specifier: ^1.3.4
         version: 1.3.4
@@ -170,6 +173,10 @@ packages:
   '@antfu/install-pkg@1.1.0':
     resolution: {integrity: sha512-MGQsmw10ZyI+EJo45CdSER4zEb+p31LpDAFp2Z3gkSd1yqVZGi0Ebx++YTEMonJy4oChEMLsxZ64j8FH6sSqtQ==}
 
+  '@authenio/xml-encryption@2.0.2':
+    resolution: {integrity: sha512-cTlrKttbrRHEw3W+0/I609A2Matj5JQaRvfLtEIGZvlN0RaPi+3ANsMeqAyCAVlH/lUIW2tmtBlSMni74lcXeg==}
+    engines: {node: '>=12'}
+
   '@babel/code-frame@7.29.0':
     resolution: {integrity: sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw==}
     engines: {node: '>=6.9.0'}
@@ -311,6 +318,14 @@ packages:
       drizzle-orm:
         optional: true
 
+  '@better-auth/infra@0.1.12':
+    resolution: {integrity: sha512-NCOX5YIyCfJXJ8HDIyZdRpMuJtjQD8+tNYd+goXkgL+/6GYwEYOm4dRRcSmqlODsjL7vC4ZHfo9bfqpafq/9Nw==}
+    peerDependencies:
+      '@better-auth/core': '>=1.4.0'
+      '@better-auth/sso': '>=1.4.0'
+      better-auth: '>=1.4.0'
+      zod: '>=4.1.12'
+
   '@better-auth/kysely-adapter@1.5.5':
     resolution: {integrity: sha512-LmHffIVnqbfsxcxckMOoE8MwibWrbVFch+kwPKJ5OFDFv6lin75ufN7ZZ7twH0IMPLT/FcgzaRjP8jRrXRef9g==}
     peerDependencies:
@@ -343,6 +358,14 @@ packages:
         optional: true
       prisma:
         optional: true
+
+  '@better-auth/sso@1.5.6':
+    resolution: {integrity: sha512-R4mC3Bj9Xy4pBz+XNjs4Z7gpukmAUc7mIgIhg0zmN7R7rjj8Uz9sBBRcf6b/+6fFyXe/mZ0f+Sc3uBaYt4hRaQ==}
+    peerDependencies:
+      '@better-auth/core': 1.5.6
+      '@better-auth/utils': 0.3.1
+      better-auth: 1.5.6
+      better-call: 1.3.2
 
   '@better-auth/telemetry@1.5.5':
     resolution: {integrity: sha512-1+lklxArn4IMHuU503RcPdXrSG2tlXt4jnGG3omolmspQ7tktg/Y9XO/yAkYDurtvMn1xJ8X1Ov01Ji/r5s9BQ==}
@@ -3137,6 +3160,14 @@ packages:
     peerDependencies:
       vue: ^3.5.0
 
+  '@xmldom/is-dom-node@1.0.1':
+    resolution: {integrity: sha512-CJDxIgE5I0FH+ttq/Fxy6nRpxP70+e2O048EPe85J2use3XKdatVM7dDVvFNjQudd9B49NPoZ+8PG49zj4Er8Q==}
+    engines: {node: '>= 16'}
+
+  '@xmldom/xmldom@0.8.11':
+    resolution: {integrity: sha512-cQzWCtO6C8TQiYl1ruKNn2U6Ao4o4WBBcbL61yJl84x+j5sOWWFU9X7DpND8XZG3daDppSsigMdfAIl2upQBRw==}
+    engines: {node: '>=10.0.0'}
+
   abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -3219,6 +3250,9 @@ packages:
 
   array-ify@1.0.0:
     resolution: {integrity: sha512-c5AMf34bKdvPhQ7tBGhqkgKNUzMr4WUs+WDtC2ZUGOUncbxKMTvqxYctiseW3+L4bA8ec+GcZ6/A/FW4m8ukng==}
+
+  asn1@0.2.6:
+    resolution: {integrity: sha512-ix/FxPn0MDjeyJ7i/yoHGFt/EX6LyNbxSEhPPXODPL+KB0VPk86UYfL0lMdy+KCnv+fmvIzySwaK5COwqVbWTQ==}
 
   ast-kit@2.2.0:
     resolution: {integrity: sha512-m1Q/RaVOnTp9JxPX+F+Zn7IcLYMzM8kZofDImfsKZd8MbR+ikdOzTeztStWqfrqIxZnYWryyI9ePm3NGjnZgGw==}
@@ -3386,6 +3420,14 @@ packages:
       zod:
         optional: true
 
+  better-call@1.3.4:
+    resolution: {integrity: sha512-ZhY7Wy1usw/YpanMBsvY+cCsdTa6k96iuetRrndvgpFSjl3Bfdqa6DxC6XJf4lzRYqxxtpJiCTjbBkHdSI7hOQ==}
+    peerDependencies:
+      zod: ^4.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
@@ -3451,6 +3493,10 @@ packages:
   cac@7.0.0:
     resolution: {integrity: sha512-tixWYgm5ZoOD+3g6UTea91eow5z6AAHaho3g0V9CNSNb45gM8SmflpAc+GRd1InC4AqN/07Unrgp56Y94N9hJQ==}
     engines: {node: '>=20.19.0'}
+
+  camelcase@9.0.0:
+    resolution: {integrity: sha512-TO9xmyXTZ9HUHI8M1OnvExxYB0eYVS/1e5s7IDMTAoIcwUd+aNcFODs6Xk83mobk0velyHFQgA1yIrvYc6wclw==}
+    engines: {node: '>=20'}
 
   caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
@@ -4350,6 +4396,13 @@ packages:
     resolution: {integrity: sha512-XXyd9d3ie/JeIIjm6WeKalvapGGFI4ShAjPJM78vgUFYzoEsuNSjvvVTuht0XZcwbVdOnEEGzhxwguRbxkIcDg==}
     hasBin: true
 
+  fast-xml-builder@1.1.4:
+    resolution: {integrity: sha512-f2jhpN4Eccy0/Uz9csxh3Nu6q4ErKxf0XIsasomfOihuSUa3/xw6w8dnOtCDgEItQFJG8KyXPzQXzcODDrrbOg==}
+
+  fast-xml-parser@5.5.8:
+    resolution: {integrity: sha512-Z7Fh2nVQSb2d+poDViM063ix2ZGt9jmY1nWhPfHBOK2Hgnb/OW3P4Et3P/81SEej0J7QbWtJqxO05h8QYfK7LQ==}
+    hasBin: true
+
   fastq@1.20.1:
     resolution: {integrity: sha512-GGToxJ/w1x32s/D2EKND7kTil4n8OVk/9mycTc4VDza13lOvpUZTGX3mFSCtV9ksdGBVzvsyAVLM6mHFThxXxw==}
 
@@ -4884,6 +4937,9 @@ packages:
     resolution: {integrity: sha512-DeXj9X5xDCjgKLU/7RR+/HQEVzuuEUiwldwOGsHK/sfAfELGWEyTcf0x+uOvCvK3O2zPmZePXWL85vtia6GyZw==}
     engines: {node: '>=16'}
     hasBin: true
+
+  libphonenumber-js@1.12.40:
+    resolution: {integrity: sha512-HKGs7GowShNls3Zh+7DTr6wYpPk5jC78l508yQQY3e8ZgJChM3A9JZghmMJZuK+5bogSfuTafpjksGSR3aMIEg==}
 
   lightningcss-android-arm64@1.31.1:
     resolution: {integrity: sha512-HXJF3x8w9nQ4jbXRiNppBCqeZPIAfUo8zE/kOEGbW5NZvGc/K7nMxbhIr+YlFlHW5mpbg/YFPdbnCh1wAXCKFg==}
@@ -5474,6 +5530,9 @@ packages:
   node-releases@2.0.36:
     resolution: {integrity: sha512-TdC8FSgHz8Mwtw9g5L4gR/Sh9XhSP/0DEkQxfEFXOpiul5IiHgHan2VhYYb6agDSfp4KuvltmGApc8HMgUrIkA==}
 
+  node-rsa@1.1.1:
+    resolution: {integrity: sha512-Jd4cvbJMryN21r5HgxQOpMEqv+ooke/korixNNK3mGqfGJmy0M77WDDzo/05969+OkMy3XW1UuZsSmW9KQm7Fw==}
+
   nopt@7.2.1:
     resolution: {integrity: sha512-taM24ViiimT/XntxbPyJQzCG+p4EKOpgD3mxFwW38mGjVUrfERQOeY4EDHjdnptttfHuHQXFx+lTP08Q+mLa/w==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -5663,6 +5722,10 @@ packages:
   path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
     engines: {node: '>=8'}
+
+  path-expression-matcher@1.2.0:
+    resolution: {integrity: sha512-DwmPWeFn+tq7TiyJ2CxezCAirXjFxvaiD03npak3cRjlP9+OjTmSy1EpIrEbh+l6JgUundniloMLDQ/6VTdhLQ==}
+    engines: {node: '>=14.0.0'}
 
   path-key@3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
@@ -6219,6 +6282,9 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
+  samlify@2.11.0:
+    resolution: {integrity: sha512-1C9ukjlf0rRsuyqdzztqikdItqa33j9NCCDZgeBiWk0etU6vxNB+SWJKW4Flk07ZlhXeev/twALEKrPhIAyfDg==}
+
   sax@1.6.0:
     resolution: {integrity: sha512-6R3J5M4AcbtLUdZmRv2SygeVaM7IhrLXu9BmnOGmmACak8fiUtOsYNWUS4uK7upbmHIBbLBeFeI//477BKLBzA==}
     engines: {node: '>=11.0.0'}
@@ -6419,6 +6485,9 @@ packages:
   strip-literal@3.1.0:
     resolution: {integrity: sha512-8r3mkIM/2+PpjHoOtiAW8Rg3jJLHaV7xPwG+YRGrv6FP0wwk/toTpATxWYOW0BKdWwl82VT2tFYi5DlROa0Mxg==}
 
+  strnum@2.2.1:
+    resolution: {integrity: sha512-BwRvNd5/QoAtyW1na1y1LsJGQNvRlkde6Q/ipqqEaivoMdV+B1OMOTVdwR+N/cwVUcIt9PYyHmV8HyexCZSupg==}
+
   structured-clone-es@2.0.0:
     resolution: {integrity: sha512-5UuAHmBLXYPCl22xWJrFuGmIhBKQzxISPVz6E7nmTmTcAOpUzlbjKJsRrCE4vADmMQ0dzeCnlWn9XufnAGf76Q==}
 
@@ -6512,6 +6581,13 @@ packages:
   tinyglobby@0.2.15:
     resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
     engines: {node: '>=12.0.0'}
+
+  tldts-core@6.1.86:
+    resolution: {integrity: sha512-Je6p7pkk+KMzMv2XXKmAE3McmolOQFdxkKw0R8EYNr7sELW46JqnNeTX8ybPiQgvg1ymCoF8LXs5fzFaZvJPTA==}
+
+  tldts@6.1.86:
+    resolution: {integrity: sha512-WMi/OQ2axVTf/ykqCQgXiIct+mSQDFdH2fkwhPwgEwvJ1kSzZRiinb0zF2Xb8u4+OqPChmyI6MEu4EezNJz+FQ==}
+    hasBin: true
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -7051,9 +7127,31 @@ packages:
     resolution: {integrity: sha512-h3Fbisa2nKGPxCpm89Hk33lBLsnaGBvctQopaBSOW/uIs6FTe1ATyAnKFJrzVs9vpGdsTe73WF3V4lIsk4Gacw==}
     engines: {node: '>=18'}
 
+  xml-crypto@6.1.2:
+    resolution: {integrity: sha512-leBOVQdVi8FvPJrMYoum7Ici9qyxfE4kVi+AkpUoYCSXaQF4IlBm1cneTK9oAxR61LpYxTx7lNcsnBIeRpGW2w==}
+    engines: {node: '>=16'}
+
+  xml-escape@1.1.0:
+    resolution: {integrity: sha512-B/T4sDK8Z6aUh/qNr7mjKAwwncIljFuUP+DO/D5hloYFj+90O88z8Wf7oSucZTHxBAsC1/CTP4rtx/x1Uf72Mg==}
+
   xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
     engines: {node: '>=12'}
+
+  xml@1.0.1:
+    resolution: {integrity: sha512-huCv9IH9Tcf95zuYCsQraZtWnJvBtLVE0QHMOs8bWyZAFZNDcYjsPq1nEx8jKA9y+Beo9v+7OBPRisQTjinQMw==}
+
+  xpath@0.0.32:
+    resolution: {integrity: sha512-rxMJhSIoiO8vXcWvSifKqhvV96GjiD5wYb8/QHdoRyQvraTpp4IEv944nhGausZZ3u7dhQXteZuZbaqfpB7uYw==}
+    engines: {node: '>=0.6.0'}
+
+  xpath@0.0.33:
+    resolution: {integrity: sha512-NNXnzrkDrAzalLhIUc01jO2mOzXGXh1JwPgkihcLLzw98c0WgYDmmjSh1Kl3wzaxSVWMuA+fe0WTWOBDWCBmNA==}
+    engines: {node: '>=0.6.0'}
+
+  xpath@0.0.34:
+    resolution: {integrity: sha512-FxF6+rkr1rNSQrhUNYrAFJpRXNzlDoMxeXN5qI84939ylEv3qqPFKa85Oxr6tDaJKqwW6KKyo2v26TSv3k6LeA==}
+    engines: {node: '>=0.6.0'}
 
   xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
@@ -7187,6 +7285,12 @@ snapshots:
     dependencies:
       package-manager-detector: 1.6.0
       tinyexec: 1.0.4
+
+  '@authenio/xml-encryption@2.0.2':
+    dependencies:
+      '@xmldom/xmldom': 0.8.11
+      escape-html: 1.0.3
+      xpath: 0.0.32
 
   '@babel/code-frame@7.29.0':
     dependencies:
@@ -7373,6 +7477,17 @@ snapshots:
     optionalDependencies:
       drizzle-orm: 0.45.1(@neondatabase/serverless@1.0.2)(@types/pg@8.18.0)(kysely@0.28.12)
 
+  '@better-auth/infra@0.1.12(@better-auth/core@1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0))(@better-auth/sso@1.5.6(@better-auth/core@1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0))(@better-auth/utils@0.3.1)(better-auth@1.5.5(drizzle-kit@0.31.10)(drizzle-orm@0.45.1(@neondatabase/serverless@1.0.2)(@types/pg@8.18.0)(kysely@0.28.12))(mongodb@7.1.0(socks@2.8.7))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue@3.5.30(typescript@5.9.3)))(better-call@1.3.2(zod@4.3.6)))(better-auth@1.5.5(drizzle-kit@0.31.10)(drizzle-orm@0.45.1(@neondatabase/serverless@1.0.2)(@types/pg@8.18.0)(kysely@0.28.12))(mongodb@7.1.0(socks@2.8.7))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue@3.5.30(typescript@5.9.3)))(zod@4.3.6)':
+    dependencies:
+      '@better-auth/core': 1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0)
+      '@better-auth/sso': 1.5.6(@better-auth/core@1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0))(@better-auth/utils@0.3.1)(better-auth@1.5.5(drizzle-kit@0.31.10)(drizzle-orm@0.45.1(@neondatabase/serverless@1.0.2)(@types/pg@8.18.0)(kysely@0.28.12))(mongodb@7.1.0(socks@2.8.7))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue@3.5.30(typescript@5.9.3)))(better-call@1.3.2(zod@4.3.6))
+      '@better-fetch/fetch': 1.1.21
+      better-auth: 1.5.5(drizzle-kit@0.31.10)(drizzle-orm@0.45.1(@neondatabase/serverless@1.0.2)(@types/pg@8.18.0)(kysely@0.28.12))(mongodb@7.1.0(socks@2.8.7))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue@3.5.30(typescript@5.9.3))
+      better-call: 1.3.4(zod@4.3.6)
+      jose: 6.2.1
+      libphonenumber-js: 1.12.40
+      zod: 4.3.6
+
   '@better-auth/kysely-adapter@1.5.5(@better-auth/core@1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0))(@better-auth/utils@0.3.1)(kysely@0.28.12)':
     dependencies:
       '@better-auth/core': 1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0)
@@ -7394,6 +7509,19 @@ snapshots:
     dependencies:
       '@better-auth/core': 1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0)
       '@better-auth/utils': 0.3.1
+
+  '@better-auth/sso@1.5.6(@better-auth/core@1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0))(@better-auth/utils@0.3.1)(better-auth@1.5.5(drizzle-kit@0.31.10)(drizzle-orm@0.45.1(@neondatabase/serverless@1.0.2)(@types/pg@8.18.0)(kysely@0.28.12))(mongodb@7.1.0(socks@2.8.7))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue@3.5.30(typescript@5.9.3)))(better-call@1.3.2(zod@4.3.6))':
+    dependencies:
+      '@better-auth/core': 1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0)
+      '@better-auth/utils': 0.3.1
+      '@better-fetch/fetch': 1.1.21
+      better-auth: 1.5.5(drizzle-kit@0.31.10)(drizzle-orm@0.45.1(@neondatabase/serverless@1.0.2)(@types/pg@8.18.0)(kysely@0.28.12))(mongodb@7.1.0(socks@2.8.7))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue@3.5.30(typescript@5.9.3))
+      better-call: 1.3.2(zod@4.3.6)
+      fast-xml-parser: 5.5.8
+      jose: 6.2.1
+      samlify: 2.11.0
+      tldts: 6.1.86
+      zod: 4.3.6
 
   '@better-auth/telemetry@1.5.5(@better-auth/core@1.5.5(@better-auth/utils@0.3.1)(@better-fetch/fetch@1.1.21)(better-call@1.3.2(zod@4.3.6))(jose@6.2.1)(kysely@0.28.12)(nanostores@1.2.0))':
     dependencies:
@@ -10086,6 +10214,10 @@ snapshots:
     dependencies:
       vue: 3.5.30(typescript@5.9.3)
 
+  '@xmldom/is-dom-node@1.0.1': {}
+
+  '@xmldom/xmldom@0.8.11': {}
+
   abbrev@2.0.0: {}
 
   abbrev@3.0.1: {}
@@ -10165,6 +10297,10 @@ snapshots:
       tslib: 2.8.1
 
   array-ify@1.0.0: {}
+
+  asn1@0.2.6:
+    dependencies:
+      safer-buffer: 2.1.2
 
   ast-kit@2.2.0:
     dependencies:
@@ -10282,6 +10418,15 @@ snapshots:
     optionalDependencies:
       zod: 4.3.6
 
+  better-call@1.3.4(zod@4.3.6):
+    dependencies:
+      '@better-auth/utils': 0.3.1
+      '@better-fetch/fetch': 1.1.21
+      rou3: 0.7.12
+      set-cookie-parser: 3.0.1
+    optionalDependencies:
+      zod: 4.3.6
+
   bindings@1.5.0:
     dependencies:
       file-uri-to-path: 1.0.0
@@ -10349,6 +10494,8 @@ snapshots:
   cac@6.7.14: {}
 
   cac@7.0.0: {}
+
+  camelcase@9.0.0: {}
 
   caniuse-api@3.0.0:
     dependencies:
@@ -11267,6 +11414,16 @@ snapshots:
 
   fast-npm-meta@1.4.2: {}
 
+  fast-xml-builder@1.1.4:
+    dependencies:
+      path-expression-matcher: 1.2.0
+
+  fast-xml-parser@5.5.8:
+    dependencies:
+      fast-xml-builder: 1.1.4
+      path-expression-matcher: 1.2.0
+      strnum: 2.2.1
+
   fastq@1.20.1:
     dependencies:
       reusify: 1.1.0
@@ -11801,6 +11958,8 @@ snapshots:
   lib0@0.2.117:
     dependencies:
       isomorphic.js: 0.2.5
+
+  libphonenumber-js@1.12.40: {}
 
   lightningcss-android-arm64@1.31.1:
     optional: true
@@ -12572,6 +12731,10 @@ snapshots:
 
   node-releases@2.0.36: {}
 
+  node-rsa@1.1.1:
+    dependencies:
+      asn1: 0.2.6
+
   nopt@7.2.1:
     dependencies:
       abbrev: 2.0.0
@@ -12992,6 +13155,8 @@ snapshots:
   path-browserify@1.0.1: {}
 
   path-exists@4.0.0: {}
+
+  path-expression-matcher@1.2.0: {}
 
   path-key@3.1.1: {}
 
@@ -13606,6 +13771,17 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
+  samlify@2.11.0:
+    dependencies:
+      '@authenio/xml-encryption': 2.0.2
+      '@xmldom/xmldom': 0.8.11
+      camelcase: 9.0.0
+      node-rsa: 1.1.1
+      xml: 1.0.1
+      xml-crypto: 6.1.2
+      xml-escape: 1.1.0
+      xpath: 0.0.34
+
   sax@1.6.0: {}
 
   scheduler@0.23.2:
@@ -13812,6 +13988,8 @@ snapshots:
     dependencies:
       js-tokens: 9.0.1
 
+  strnum@2.2.1: {}
+
   structured-clone-es@2.0.0: {}
 
   stylehacks@7.0.8(postcss@8.5.8):
@@ -13909,6 +14087,12 @@ snapshots:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
+
+  tldts-core@6.1.86: {}
+
+  tldts@6.1.86:
+    dependencies:
+      tldts-core: 6.1.86
 
   to-regex-range@5.0.1:
     dependencies:
@@ -14433,7 +14617,23 @@ snapshots:
     dependencies:
       is-wsl: 3.1.1
 
+  xml-crypto@6.1.2:
+    dependencies:
+      '@xmldom/is-dom-node': 1.0.1
+      '@xmldom/xmldom': 0.8.11
+      xpath: 0.0.33
+
+  xml-escape@1.1.0: {}
+
   xml-name-validator@4.0.0: {}
+
+  xml@1.0.1: {}
+
+  xpath@0.0.32: {}
+
+  xpath@0.0.33: {}
+
+  xpath@0.0.34: {}
 
   xtend@4.0.2: {}
 
