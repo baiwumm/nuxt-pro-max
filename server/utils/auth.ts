@@ -97,6 +97,7 @@ export const auth = betterAuth({
           INVALID_PASSWORD: '密码错误',
           CREDENTIAL_ACCOUNT_NOT_FOUND: '凭证账户未找到',
           EMAIL_NOT_VERIFIED: '邮箱未验证',
+          INVALID_TOKEN: 'Token 令牌非法',
         },
       },
     }),

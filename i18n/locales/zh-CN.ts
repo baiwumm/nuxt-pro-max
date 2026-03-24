@@ -26,6 +26,12 @@ export default defineI18nLocale(async () => {
         submit: '发送重置链接',
         success: '如果该邮箱已注册，我们已发送重置邮件',
       },
+      resetPassword: {
+        title: '重置密码',
+        description: '请在下方输入您的新密码',
+        submit: '保存新的密码',
+        success: '重置密码成功',
+      },
       name: {
         label: '用户名',
         placeholder: '请输入用户名',
@@ -40,6 +46,10 @@ export default defineI18nLocale(async () => {
         placeholder: '请输入密码',
         error: '密码长度不能小于 8 个字符',
         forgot: '忘记密码？',
+      },
+      newPassword: {
+        label: '新密码',
+        placeholder: '请输入新密码',
       },
       provide: {
         github: 'Github',

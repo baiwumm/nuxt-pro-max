@@ -26,6 +26,13 @@ export default defineI18nLocale(async () => {
         submit: 'Send reset Link',
         success: 'If an account with this email exists, a reset link has been sent',
       },
+      resetPassword: {
+        title: 'Reset Password',
+        description: 'Enter your new password below',
+        submit: 'Save new password',
+        success: 'Password reset successful',
+        newPassword: ' New Password',
+      },
       name: {
         label: 'userName',
         placeholder: 'Enter your userName',
@@ -40,6 +47,10 @@ export default defineI18nLocale(async () => {
         placeholder: 'Enter your password',
         error: 'The password length must be no less than 8 characters',
         forgot: 'Forgot your password?',
+      },
+      newPassword: {
+        label: 'New Password',
+        placeholder: 'Enter your new Password',
       },
       provide: {
         github: 'Github',
