@@ -71,6 +71,12 @@ export default defineI18nLocale(async () => {
       dashboard: {
         title: '控制台',
       },
+      systemSettings: {
+        title: '系统设置',
+        userManage: {
+          title: '用户管理',
+        },
+      },
     },
     components: {
       themePicker: {

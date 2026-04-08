@@ -72,6 +72,12 @@ export default defineI18nLocale(async () => {
       dashboard: {
         title: 'Dashboard',
       },
+      systemSettings: {
+        title: 'System Settings',
+        userManage: {
+          title: 'User Manage',
+        },
+      },
     },
     components: {
       themePicker: {
