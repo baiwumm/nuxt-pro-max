@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import * as locales from '@nuxt/ui/locale'
-import '@bprogress/core/css'
 
 const { locale } = useI18n()
 
@@ -34,7 +33,7 @@ useFaviconFromTheme()
       }"
     >
       <FullLoading />
-      <NuxtLoadingIndicator />
+      <NuxtLoadingIndicator color="var(--ui-primary)" />
       <UMain>
         <NuxtLayout>
           <NuxtPage />

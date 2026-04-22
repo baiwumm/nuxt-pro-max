@@ -1,11 +1,12 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+@import "@bprogress/core/css";
 
 @theme {
   --font-sans: 'Maple Mono CN','Public Sans', sans-serif;
 }
 
-html,
-body {
+:root {
   font-family: var(--font-sans) !important;
+  --bprogress-color: var(--color-primary);
 }
