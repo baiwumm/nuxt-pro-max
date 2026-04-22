@@ -32,7 +32,7 @@ const items = computed(() => ([
   }],
   [{
     label: $t('components.themePicker.primaryColor'),
-    icon: 'i-lucide-palette',
+    icon: 'lucide:palette',
     chip: appConfig.ui.colors.primary,
     children: [
       {
@@ -61,7 +61,7 @@ const items = computed(() => ([
     ],
   }, {
     label: $t('components.themePicker.colorMode'),
-    icon: 'i-lucide-sun-moon',
+    icon: 'lucide:sun-moon',
     children: COLOR_MODES.items.map(({ value, label, raw }) => ({
       label,
       icon: raw.icon,
@@ -101,13 +101,13 @@ const items = computed(() => ([
   }],
   [
     {
-      label: 'Github',
+      label: $t('layout.github'),
       icon: 'simple-icons:github',
       to: pkg.git.url,
       target: '_blank',
     },
     {
-      label: 'Blog',
+      label: $t('layout.blog'),
       icon: 'i-lucide-house',
       to: 'https://baiwumm.com',
       target: '_blank',
@@ -115,7 +115,7 @@ const items = computed(() => ([
   ],
   [
     {
-      label: 'Log out',
+      label: $t('auth.logout.title'),
       icon: 'i-lucide-log-out',
       color: 'error',
     },

@@ -5,7 +5,7 @@ defineProps<{
   collapsed?: boolean
 }>()
 
-const items = ref<DropdownMenuItem[][]>([
+const items = computed<DropdownMenuItem[][]>(() => [
   [
     {
       label: $t('components.SidebarLogo.title'),

@@ -65,16 +65,54 @@ export default defineI18nLocale(async () => {
         google: '谷歌',
         vercel: 'Vercel',
       },
+      logout: {
+        title: '退出登录',
+      },
       waitLogin: '正在登录中...',
     },
     pages: {
-      dashboard: {
-        title: '控制台',
+      title: '控制台',
+      administrative: {
+        title: '智能行政',
+        message: {
+          title: '消息公告',
+        },
+        organization: {
+          title: '组织管理',
+        },
+        postManage: {
+          title: '岗位管理',
+        },
+        framework: {
+          title: '组织架构',
+        },
+      },
+      playground: {
+        title: '实验场',
+        spinner: {
+          title: '加载器',
+          description: '移植于 Hero UI 的 Spinner 组件!',
+          usage: '基本使用',
+          colors: '颜色',
+          sizes: '尺寸',
+        },
       },
       systemSettings: {
         title: '系统设置',
         userManage: {
           title: '用户管理',
+        },
+        menuManage: {
+          title: '菜单管理',
+        },
+        roleManage: {
+          title: '角色管理',
+        },
+        internalization: {
+          title: '国际化',
+        },
+        operationLog: {
+          title: '操作日志',
         },
       },
     },
@@ -88,6 +126,12 @@ export default defineI18nLocale(async () => {
       SidebarLogo: {
         title: '技术栈',
       },
+    },
+    layout: {
+      searchMenu: '搜索菜单',
+      friendLink: '友情链接',
+      blog: '博客',
+      github: 'Github',
     },
     common: {
       requestError: '请求失败，请稍后重试',

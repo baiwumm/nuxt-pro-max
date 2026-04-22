@@ -1,47 +1,38 @@
 <script setup lang="ts">
-import type { CommandPaletteGroup, CommandPaletteItem, NavigationMenuItem } from '@nuxt/ui'
-import pkg from '~~/package.json'
+import type { CommandPaletteGroup, CommandPaletteItem } from '@nuxt/ui'
+import { findMenuByPath, menuData, tMenu } from '@/utils/menuConfig'
 
 const open = ref(false)
+const route = useRoute()
+const { t } = useI18n()
 
-const items = ref<NavigationMenuItem[][]>([[{
-  label: $t('pages.dashboard.title'),
-  icon: 'lucide:monitor',
-  to: '/dashboard',
-  badge: 'New',
-}, {
-  label: $t('pages.systemSettings.title'),
-  icon: 'i-lucide-settings',
-  defaultOpen: true,
-  type: 'trigger',
-  children: [{
-    label: $t('pages.systemSettings.userManage.title'),
-    icon: 'ri:group-line',
-    to: '/system-settings/user-manage',
-  }],
-}], [{
-  label: 'Github',
-  icon: 'simple-icons:github',
-  to: pkg.git.url,
-  target: '_blank',
-}, {
-  label: 'Blog',
-  icon: 'i-lucide-house',
-  to: 'https://baiwumm.com',
-  target: '_blank',
-}]])
+const items = computed(() => {
+  return menuData.map(menu => tMenu(menu, t))
+})
+
+// 动态标题
+const title = computed(() => {
+  if (!menuData[0]) {
+    return ''
+  }
+  const item = findMenuByPath(menuData[0], route.path)
+  return item?.label ? t(item.label) : ''
+})
 
 const groups = computed(() => [{
-  id: 'links',
-  label: 'Go to',
-  items: items.value.flat(),
-}])
+  id: 'searchMenu',
+  label: $t('layout.searchMenu'),
+  items: items.value[0],
+}, {
+  id: 'friendLink',
+  label: $t('layout.friendLink'),
+  items: items.value[1],
+}] as CommandPaletteGroup<CommandPaletteItem>[])
 </script>
 
 <template>
   <UDashboardGroup unit="rem">
     <UDashboardSidebar
-      id="default"
       v-model:open="open"
       collapsible
       resizable
@@ -77,8 +68,33 @@ const groups = computed(() => [{
       </template>
     </UDashboardSidebar>
 
-    <UDashboardSearch :groups="groups as CommandPaletteGroup<CommandPaletteItem>[]" />
-
-    <slot />
+    <UDashboardSearch :groups="groups" />
+    <UDashboardPanel>
+      <template #header>
+        <UDashboardNavbar>
+          <template #title>
+            <Transition
+              mode="out-in"
+              enter-active-class="transition-all duration-500"
+              enter-from-class="opacity-0 translate-x-[-10px] blur-sm"
+              enter-to-class="opacity-100 translate-x-0 blur-0"
+              leave-active-class="transition-all duration-500"
+              leave-from-class="opacity-100 translate-x-0 blur-0"
+              leave-to-class="opacity-0 translate-x-[10px] blur-sm"
+            >
+              <span :key="title" class="block">
+                {{ title }}
+              </span>
+            </Transition>
+          </template>
+          <template #leading>
+            <UDashboardSidebarCollapse />
+          </template>
+        </UDashboardNavbar>
+      </template>
+      <template #body>
+        <slot />
+      </template>
+    </UDashboardPanel>
   </UDashboardGroup>
 </template>

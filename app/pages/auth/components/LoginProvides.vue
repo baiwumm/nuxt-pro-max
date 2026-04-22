@@ -20,7 +20,7 @@ async function onOAuth(provider: typeof OAUTH_PROVIDES.valueType) {
   oauthType.value = provider
   const { error } = await $authClient.signIn.social({
     provider,
-    callbackURL: '/dashboard',
+    callbackURL: '/',
   }).finally(() => {
     loading.value = false
     oauthType.value = null

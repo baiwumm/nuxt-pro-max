@@ -41,7 +41,7 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
   loading.value = true
   const { error } = await $authClient.signIn.email({
     ...formData,
-    callbackURL: '/dashboard',
+    callbackURL: '/',
   }).finally(() => {
     loading.value = false
   })

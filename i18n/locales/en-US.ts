@@ -32,7 +32,6 @@ export default defineI18nLocale(async () => {
         description: 'Enter your new password below',
         submit: 'Save new password',
         success: 'Password reset successful',
-        newPassword: 'New Password',
       },
       magicLink: {
         title: 'Magic Link',
@@ -66,16 +65,54 @@ export default defineI18nLocale(async () => {
         google: 'Google',
         vercel: 'Vercel',
       },
+      logout: {
+        title: 'Log Out',
+      },
       waitLogin: 'Logging in...',
     },
     pages: {
-      dashboard: {
-        title: 'Dashboard',
+      title: 'Dashboard',
+      administrative: {
+        title: 'Administrative',
+        message: {
+          title: 'Message',
+        },
+        organization: {
+          title: 'Organization',
+        },
+        postManage: {
+          title: 'Post Manage',
+        },
+        framework: {
+          title: 'Framework',
+        },
+      },
+      playground: {
+        title: 'Playground',
+        spinner: {
+          title: 'Spinner',
+          description: 'The Spinner component, which has been transplanted from Hero UI!',
+          usage: 'Usage',
+          colors: 'Colors',
+          sizes: 'Sizes',
+        },
       },
       systemSettings: {
         title: 'System Settings',
         userManage: {
           title: 'User Manage',
+        },
+        menuManage: {
+          title: 'Menu Manage',
+        },
+        roleManage: {
+          title: 'Role Manage',
+        },
+        internalization: {
+          title: 'Internalization',
+        },
+        operationLog: {
+          title: 'Operation Log',
         },
       },
     },
@@ -89,6 +126,12 @@ export default defineI18nLocale(async () => {
       SidebarLogo: {
         title: 'Technical stack',
       },
+    },
+    layout: {
+      searchMenu: 'Search Menu',
+      friendLink: 'Friendship Link',
+      blog: 'Blog',
+      github: 'Github',
     },
     common: {
       requestError: 'Request failed. Please try again later',

@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import type { ButtonProps } from '@nuxt/ui'
-
 const props = defineProps<{
   size?: 'sm' | 'md' | 'lg' | 'xl'
-  color?: ButtonProps['color']
+  color?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error' | 'neutral'
   class?: string
 }>()
 
@@ -15,7 +13,7 @@ const classes = computed(() => {
   return [
     'spinner',
     props.size && `spinner--${props.size}`,
-    `spinner--${props.color || 'primary'}`,
+    `text-${props.color || 'primary'}`,
     props.class,
   ]
 })
@@ -93,34 +91,5 @@ const classes = computed(() => {
 
 .spinner--xl {
   @apply size-10;
-}
-
-/* ================= Color ================= */
-.spinner--primary {
-  color: var(--ui-primary);
-}
-
-.spinner--secondary {
-  color: var(--ui-secondary);
-}
-
-.spinner--success {
-  color: var(--ui-success);
-}
-
-.spinner--info {
-  color: var(--ui-info);
-}
-
-.spinner--warning {
-  color: var(--ui-warning);
-}
-
-.spinner--error {
-  color: var(--ui-error);
-}
-
-.spinner--neutral {
-  color: var(--ui-neutral);
 }
 </style>

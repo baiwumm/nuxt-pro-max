@@ -34,7 +34,7 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
   loading.value = true
   const { error } = await $authClient.signIn.magicLink({
     ...formData,
-    callbackURL: '/dashboard',
+    callbackURL: '/',
   }).finally(() => {
     loading.value = false
   })
