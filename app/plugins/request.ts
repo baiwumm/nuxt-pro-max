@@ -2,10 +2,9 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-03-19 11:10:04
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-04-22 15:55:25
+ * @LastEditTime: 2026-04-23 14:34:35
  * @Description: $fetch 请求封装
  */
-import type { ApiResponse } from '@/types/common'
 import { defineNuxtPlugin, navigateTo, useCookie, useRuntimeConfig } from '#app'
 import { BProgress } from '@bprogress/core'
 import { ofetch } from 'ofetch'
@@ -62,7 +61,7 @@ export default defineNuxtPlugin(() => {
       endLoading()
 
       // 统一响应数据
-      const res = response._data as ApiResponse<any>
+      const res = response._data as Api.IResponse<any>
       if (!isSuccess(res.code)) {
         toast.add({
           title: res.msg || RESPONSE_CODE.label(RESPONSE_CODE.SERVER_ERROR),
@@ -70,14 +69,14 @@ export default defineNuxtPlugin(() => {
         })
         return Promise.reject(res)
       }
-      return res.data || {}
+      return res.data
     },
 
     // 响应错误
     async onResponseError({ response, error }) {
       endLoading()
 
-      const res = response?._data as ApiResponse<any> | undefined
+      const res = response?._data as Api.IResponse | undefined
 
       // 401
       if (res?.code === RESPONSE_CODE.UNAUTHORIZED) {

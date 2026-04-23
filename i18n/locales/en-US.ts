@@ -105,6 +105,11 @@ export default defineI18nLocale(async () => {
         },
         menuManage: {
           title: 'Menu Manage',
+          label: 'Menu Name',
+          to: 'Path',
+          badge: 'Badge',
+          defaultOpen: 'Default Open',
+          enabled: 'Enabled',
         },
         roleManage: {
           title: 'Role Manage',
@@ -135,8 +140,20 @@ export default defineI18nLocale(async () => {
       github: 'Github',
     },
     common: {
+      index: 'Index',
+      icon: 'Icon',
+      sort: 'Sort',
       requestError: 'Request failed. Please try again later',
       loading: 'Loading...',
+      search: 'Search',
+      add: 'Add',
+      edit: 'Edit',
+      delete: 'Delete',
+      cancel: 'Cancel',
+      confirm: 'Confirm',
+      reset: 'Reset',
+      columnVisibility: 'Column Visibility',
+      searchKeyword: 'Search Keyword...',
     },
   }
 })

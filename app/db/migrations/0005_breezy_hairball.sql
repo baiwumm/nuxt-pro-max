@@ -1,0 +1,1 @@
+ALTER TABLE "menu" DROP CONSTRAINT "menu_parent_to_unique";

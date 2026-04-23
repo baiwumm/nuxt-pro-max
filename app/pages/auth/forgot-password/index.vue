@@ -45,8 +45,16 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
     Object.assign(state, { email: '' })
   }
   catch (err) {
+    let message = '未知错误'
+
+    if (err instanceof Error) {
+      message = err.message
+    }
+    else if (typeof err === 'string') {
+      message = err
+    }
     toast.add({
-      title: catchError(err),
+      title: message,
       color: 'error',
     })
   }

@@ -9,7 +9,11 @@ export const RESPONSE_CODE = Enum({
   UNAUTHORIZED: { value: 401, label: '未登录或 token 失效' },
   FORBIDDEN: { value: 403, label: '没有权限' },
   NOT_FOUND: { value: 404, label: '资源不存在' },
+  CONFLICT: { value: 409, label: '资源冲突' },
   SERVER_ERROR: { value: 500, label: '服务器错误' },
+
+  // PostgreSQL 错误码
+  UNIQUE_VIOLATION: { value: '23505', label: '唯一约束冲突' },
 })
 
 /**

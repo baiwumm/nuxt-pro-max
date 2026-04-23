@@ -1,3 +1,5 @@
+import { Placeholder } from 'drizzle-orm'
+
 export default defineI18nLocale(async () => {
   return {
     auth: {
@@ -105,6 +107,11 @@ export default defineI18nLocale(async () => {
         },
         menuManage: {
           title: '菜单管理',
+          label: '菜单名称',
+          to: '路由地址',
+          badge: '角标',
+          defaultOpen: '默认展开',
+          enabled: '是否启用',
         },
         roleManage: {
           title: '角色管理',
@@ -135,8 +142,20 @@ export default defineI18nLocale(async () => {
       github: 'Github',
     },
     common: {
+      index: '序号',
+      icon: '图标',
+      sort: '排序',
       requestError: '请求失败，请稍后重试',
       loading: '加载中...',
+      search: '搜索',
+      add: '新增',
+      edit: '编辑',
+      delete: '删除',
+      cancel: '取消',
+      confirm: '确定',
+      reset: '重置',
+      columnVisibility: '列设置',
+      searchKeyword: '搜索关键字...',
     },
   }
 })

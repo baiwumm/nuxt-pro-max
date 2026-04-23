@@ -22,6 +22,27 @@
       "when": 1776852550250,
       "tag": "0002_complex_liz_osborn",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1776922838612,
+      "tag": "0003_glorious_ultimates",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1776923399784,
+      "tag": "0004_giant_joystick",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1776924662830,
+      "tag": "0005_breezy_hairball",
+      "breakpoints": true
     }
   ]
 }

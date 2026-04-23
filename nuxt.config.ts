@@ -22,7 +22,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/i18n',
     'dayjs-nuxt',
-    '@bubblesortt/nuxt-es-toolkit',
     'nuxt-resend',
     '@vueuse/nuxt',
     '@pinia/nuxt',

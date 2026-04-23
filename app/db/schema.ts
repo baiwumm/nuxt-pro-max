@@ -1,4 +1,5 @@
-import { boolean, index, integer, pgEnum, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
+import { boolean, foreignKey, index, integer, pgEnum, pgTable, text, timestamp, unique } from 'drizzle-orm/pg-core'
+import { createInsertSchema, createUpdateSchema } from 'drizzle-zod'
 
 export * from '../../auth-schema'
 
@@ -39,4 +40,15 @@ export const menu = pgTable('menu', {
 }, t => ([
   index('menu_parent_idx').on(t.parentId),
   index('menu_sort_idx').on(t.parentId, t.sort),
+  // --- 显式定义外键约束（推荐，确保数据库层面的一致性） ---
+  foreignKey({
+    columns: [t.parentId],
+    foreignColumns: [t.id],
+    name: 'menu_parent_fk', // 约束名称
+  }),
 ]))
+export const insertMenuSchema = createInsertSchema(menu).omit({
+  createdAt: true,
+  updatedAt: true,
+})
+export const updateMenuSchema = createUpdateSchema(menu)
