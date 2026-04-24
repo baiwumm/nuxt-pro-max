@@ -16,7 +16,8 @@ const keyword = ref('')
 const table = useTemplateRef('table')
 const open = ref(false)
 const editData = ref<System.Menu | null>(null)
-const actionLoading = ref(false)
+const saveLoading = ref(false)
+const deleteId = ref<number | null>(null)
 
 // 获取菜单列表
 const { data, pending: loading, refresh } = useAsyncData(
@@ -143,7 +144,7 @@ const columns = computed<TableColumn<System.MenuTree>[]>(() => [
             variant: 'outline',
             size: 'xs',
             icon: 'lucide:pencil-line',
-            disabled: actionLoading.value,
+            disabled: saveLoading.value,
             onClick: () => {
               editData.value = row.original
               open.value = true
@@ -155,8 +156,8 @@ const columns = computed<TableColumn<System.MenuTree>[]>(() => [
             variant: 'soft',
             size: 'xs',
             icon: 'lucide:trash-2',
-            disabled: actionLoading.value && row.original.id !== editData.value?.id,
-            loading: actionLoading.value && row.original.id === editData.value?.id,
+            disabled: deleteId.value !== null && row.original.id !== deleteId.value,
+            loading: deleteId.value !== null && row.original.id === deleteId.value,
             onClick: () => handleDelete(row.original),
           }),
         ],
@@ -182,8 +183,7 @@ const columnPinning = ref({
 
 // 删除回调
 async function handleDelete(row: System.MenuTree) {
-  actionLoading.value = true
-  editData.value = row
+  deleteId.value = row.id
   await delMenu(row.id).then(({ code }) => {
     if (isSuccess(code)) {
       toast.add({
@@ -194,13 +194,13 @@ async function handleDelete(row: System.MenuTree) {
       handleRefresh()
     }
   }).finally(() => {
-    actionLoading.value = false
+    deleteId.value = null
   })
 }
 
 // 表单提交
 async function handleSubmit(values: System.InsertMenu) {
-  actionLoading.value = true
+  saveLoading.value = true
   await (editData.value?.id ? updateMenu({ ...values, id: editData.value.id }) : insertMenu(values)).then(({ code }) => {
     if (isSuccess(code)) {
       toast.add({
@@ -212,7 +212,7 @@ async function handleSubmit(values: System.InsertMenu) {
       handleRefresh()
     }
   }).finally(() => {
-    actionLoading.value = false
+    saveLoading.value = false
   })
 }
 
@@ -265,6 +265,6 @@ onMounted(() => {
         td: 'empty:p-0 group-has-[td:not(:empty)]:border-b border-default text-center',
       }"
     />
-    <FormModal v-model="open" :data="editData" :menu-tree="data || []" :loading="actionLoading" @submit="handleSubmit" />
+    <FormModal v-model="open" :data="editData" :menu-tree="data || []" :loading="saveLoading" @submit="handleSubmit" />
   </div>
 </template>

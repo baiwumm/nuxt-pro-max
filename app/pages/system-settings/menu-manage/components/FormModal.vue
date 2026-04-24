@@ -24,13 +24,13 @@ const formSchema = z.object({
   badge: z.string().optional(),
   enabled: z.boolean().default(true),
   defaultOpen: z.boolean().default(false),
-  target: z.enum(['_self', '_blank']).default('_self'),
+  target: z.enum(MENU_TARGET.values).default(MENU_TARGET.SELF),
   sort: z.number().default(0),
 })
 type FormSchema = z.output<typeof formSchema>
 
 // 初始表单状态
-const INITIAL_STATE: FormSchema = {
+const INITIAL_STATE = Object.freeze<FormSchema>({
   parentId: undefined,
   label: '',
   icon: '',
@@ -38,16 +38,17 @@ const INITIAL_STATE: FormSchema = {
   badge: undefined,
   enabled: true,
   defaultOpen: false,
-  target: '_self',
+  target: MENU_TARGET.SELF,
   sort: 0,
-}
+})
 
 /** 表单 */
-const state = reactive<Partial<FormSchema>>(cloneDeep(INITIAL_STATE))
+const state = reactive<FormSchema>(cloneDeep(INITIAL_STATE))
 
 /** 重置函数 */
 function resetState(newData?: Partial<FormSchema> | null) {
-  const target = newData ?? cloneDeep(INITIAL_STATE)
+  const target = newData ?? INITIAL_STATE
+  Object.keys(state).forEach(key => delete state[key as keyof FormSchema])
   Object.assign(state, cloneDeep(target))
 }
 
@@ -55,8 +56,12 @@ function resetState(newData?: Partial<FormSchema> | null) {
 watch(
   () => props.data,
   (val) => {
-    if (val && Object.keys(val).length > 0) {
-      resetState({ ...val, parentId: val.parentId ? String(val.parentId) : undefined, badge: val.badge ?? undefined })
+    if (val) {
+      resetState({
+        ...val,
+        parentId: val.parentId ? String(val.parentId) : undefined,
+        badge: val.badge ?? undefined,
+      })
     }
     else {
       resetState()
@@ -81,23 +86,23 @@ async function onSubmit(event: FormSubmitEvent<FormSchema>) {
 }
 
 // 递归查找树形结构中的节点
-function findNodeInTree(tree: System.MenuTree[], id: FormSchema['parentId']): System.MenuTree | null {
-  for (const node of tree) {
-    if (String(node.id) === id) {
-      return node
-    }
-    if (node.children && node.children.length) {
-      const found = findNodeInTree(node.children, id)
-      if (found)
-        return found
-    }
+const menuMap = computed(() => {
+  const map = new Map<string, System.MenuTree>()
+
+  function traverse(tree: System.MenuTree[]) {
+    tree.forEach((node) => {
+      map.set(String(node.id), node)
+      if (node.children)
+        traverse(node.children)
+    })
   }
-  return null
-}
+
+  traverse(props.menuTree)
+  return map
+})
 
 const parentIcon = computed(() => {
-  const node = findNodeInTree(props.menuTree, state.parentId)
-  return node?.icon
+  return state.parentId ? menuMap.value.get(state.parentId)?.icon : undefined
 })
 
 function flattenMenuTree(tree: System.MenuTree[], level = 0, result: SelectMenuItem[] = []) {
@@ -115,6 +120,7 @@ function flattenMenuTree(tree: System.MenuTree[], level = 0, result: SelectMenuI
   })
   return result
 }
+const selectMenuItems = computed(() => flattenMenuTree(props.menuTree))
 </script>
 
 <template>
@@ -130,7 +136,7 @@ function flattenMenuTree(tree: System.MenuTree[], level = 0, result: SelectMenuI
           <USelectMenu
             v-model="state.parentId"
             value-key="id"
-            :items="flattenMenuTree(menuTree)"
+            :items="selectMenuItems"
             :placeholder="$t('common.select')"
             :icon="parentIcon"
             clear
@@ -150,7 +156,6 @@ function flattenMenuTree(tree: System.MenuTree[], level = 0, result: SelectMenuI
           >
             <template #trailing>
               <div
-                id="character-count"
                 class="text-xs text-muted tabular-nums"
                 aria-live="polite"
                 role="status"
@@ -183,7 +188,6 @@ function flattenMenuTree(tree: System.MenuTree[], level = 0, result: SelectMenuI
           >
             <template #trailing>
               <div
-                id="character-count"
                 class="text-xs text-muted tabular-nums"
                 aria-live="polite"
                 role="status"
@@ -203,7 +207,6 @@ function flattenMenuTree(tree: System.MenuTree[], level = 0, result: SelectMenuI
           >
             <template #trailing>
               <div
-                id="character-count"
                 class="text-xs text-muted tabular-nums"
                 aria-live="polite"
                 role="status"
