@@ -20,7 +20,16 @@ const formSchema = z.object({
   parentId: z.string().nullable().optional(),
   label: z.string($t('common.placeholder')).min(1, $t('common.required')),
   icon: z.string($t('common.placeholder')).min(1, $t('common.required')),
-  to: z.string($t('common.placeholder')).min(1, $t('common.required')).regex(/^(\/|https?:\/\/)/, $t('pages.systemSettings.menuManage.toReg')),
+  to: z.preprocess(
+    (val) => {
+      if (val === '')
+        return undefined
+      return val
+    },
+    z.string()
+      .regex(/^(\/|https?:\/\/)/, $t('pages.systemSettings.menuManage.toReg'))
+      .optional(),
+  ),
   badge: z.string().optional(),
   enabled: z.boolean().default(true),
   defaultOpen: z.boolean().default(false),
@@ -34,7 +43,7 @@ const INITIAL_STATE = Object.freeze<FormSchema>({
   parentId: undefined,
   label: '',
   icon: '',
-  to: '',
+  to: undefined,
   badge: undefined,
   enabled: true,
   defaultOpen: false,
@@ -60,6 +69,7 @@ watch(
       resetState({
         ...val,
         parentId: val.parentId ? String(val.parentId) : undefined,
+        to: val.to ?? undefined,
         badge: val.badge ?? undefined,
       })
     }
@@ -82,6 +92,7 @@ async function onSubmit(event: FormSubmitEvent<FormSchema>) {
   emit('submit', {
     ...values,
     parentId: values.parentId ? Number(values.parentId) : null,
+    to: values.to ?? null,
   })
 }
 
@@ -178,7 +189,7 @@ const selectMenuItems = computed(() => flattenMenuTree(props.menuTree))
             </template>
           </UInput>
         </UFormField>
-        <UFormField name="to" :label="$t('pages.systemSettings.menuManage.to')" required>
+        <UFormField name="to" :label="$t('pages.systemSettings.menuManage.to')">
           <UInput
             v-model="state.to"
             :maxlength="200"

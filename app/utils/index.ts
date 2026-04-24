@@ -1,4 +1,3 @@
-import type { NavigationMenuItem } from '@nuxt/ui'
 import type { ClassValue } from 'clsx'
 import type { Composer } from 'vue-i18n'
 import { clsx } from 'clsx'
@@ -36,13 +35,13 @@ export const isSuccess = (code: Api.ResponseCode) => code === RESPONSE_CODE.SUCC
 
 /**
  * @description: 处理 label
- * @param {NavigationMenuItem} items
+ * @param {System.MenuTree} items
  */
-export function tMenu(items: NavigationMenuItem[], t: Composer['t']): NavigationMenuItem[] {
+export function tMenu(items: System.MenuTree[], t: Composer['t']): System.MenuTree[] {
   return items.map(item => ({
     ...item,
     label: item.label ? t(item.label) : item.label,
-    children: item.children ? tMenu(item.children, t) : undefined,
+    children: item.children ? tMenu(item.children, t) : [],
   }))
 }
 
@@ -51,7 +50,7 @@ export function tMenu(items: NavigationMenuItem[], t: Composer['t']): Navigation
  * @param {*} menu
  * @param {*} path
  */
-export function findMenuByPath(menu: NavigationMenuItem[], path: string): NavigationMenuItem | null {
+export function findMenuByPath(menu: System.MenuTree[], path: string): System.MenuTree | null {
   for (const item of menu) {
     if (item.to === path)
       return item

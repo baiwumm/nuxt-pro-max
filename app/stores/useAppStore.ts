@@ -2,13 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-03-20 09:23:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-03-20 15:22:25
+ * @LastEditTime: 2026-04-24 16:44:45
  * @Description: 全局状态
  */
 import { defineStore } from 'pinia'
 import { COLOR_MODES } from '@/enums'
 
-export const useAppStore = defineStore('app', () => {
+export const useAppStore = defineStore('app-store', () => {
   const appConfig = useAppConfig()
   const colorMode = useColorMode()
   // 主题色

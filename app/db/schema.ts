@@ -19,7 +19,7 @@ export const menu = pgTable('menu', {
   // icon: lucide:monitor
   icon: text('icon').notNull(),
   // route path: /
-  to: text('to').notNull(),
+  to: text('to'),
   // badge: New
   badge: text('badge'),
   // 树形结构关键字段

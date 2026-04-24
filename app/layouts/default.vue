@@ -1,20 +1,35 @@
 <script setup lang="ts">
-import type { CommandPaletteGroup, CommandPaletteItem } from '@nuxt/ui'
+import type { CommandPaletteGroup, CommandPaletteItem, NavigationMenuItem } from '@nuxt/ui'
 import pkg from '~~/package.json'
-import { menuData } from '@/utils/menuConfig'
+
+const { getMenuList } = useSystemApi()
+// 获取菜单列表
+const { data: menuTree, refresh } = useAsyncData(
+  'sidebar-menu',
+  async () => {
+    const res = await getMenuList()
+    return res.data ?? []
+  },
+  {
+    default: () => [],
+  },
+)
 
 const open = ref(false)
 const route = useRoute()
 const { t } = useI18n()
 
-const menuItems = computed(() => tMenu(menuData, t))
+const menuItems = computed(() => {
+  const list = menuTree.value ?? []
+  return tMenu(list, t)
+})
 
 // 动态标题
 const title = computed(() => {
-  if (!menuData) {
+  if (!menuTree) {
     return ''
   }
-  const item = findMenuByPath(menuData, route.path)
+  const item = findMenuByPath(menuTree.value, route.path)
   return item?.label ? t(item.label) : ''
 })
 
@@ -40,6 +55,10 @@ const groups = computed(() => [{
     },
   ],
 }] as CommandPaletteGroup<CommandPaletteItem>[])
+
+onMounted(async () => {
+  await refresh()
+})
 </script>
 
 <template>
@@ -60,7 +79,7 @@ const groups = computed(() => [{
 
         <UNavigationMenu
           :collapsed
-          :items="menuItems"
+          :items="menuItems as NavigationMenuItem[]"
           orientation="vertical"
           tooltip
           popover

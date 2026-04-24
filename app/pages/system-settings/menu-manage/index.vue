@@ -21,7 +21,7 @@ const deleteId = ref<number | null>(null)
 
 // 获取菜单列表
 const { data, pending: loading, refresh } = useAsyncData(
-  'menu',
+  'menu-manage',
   async () => {
     const res = await getMenuList({ keyword: keyword.value })
     return res.data ?? []
@@ -83,7 +83,8 @@ const columns = computed<TableColumn<System.MenuTree>[]>(() => [
     accessorKey: 'to',
     header: $t('pages.systemSettings.menuManage.to'),
     cell: ({ row }) => {
-      return h(UBadge, { variant: 'soft', color: 'secondary' }, () => row.getValue('to'))
+      const val = row.getValue('to')
+      return val ? h(UBadge, { variant: 'soft', color: 'secondary' }, () => row.getValue('to')) : '-'
     },
   },
   {
@@ -98,7 +99,7 @@ const columns = computed<TableColumn<System.MenuTree>[]>(() => [
     header: $t('pages.systemSettings.menuManage.badge'),
     cell: ({ row }) => {
       const val = row.getValue('badge')
-      return val ? h(UBadge, { variant: 'outline', color: 'neutral' }, () => row.getValue('badge')) : '--'
+      return val ? h(UBadge, { variant: 'outline', color: 'neutral' }, () => row.getValue('badge')) : '-'
     },
   },
   {
