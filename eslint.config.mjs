@@ -5,4 +5,7 @@ export default antfu({
   typescript: true,
   stylistic: true,
   tailwindcss: true,
+  rules: {
+    'n/prefer-global/process': 'off',
+  },
 })
