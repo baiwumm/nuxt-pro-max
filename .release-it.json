@@ -24,7 +24,8 @@
     }
   },
   "git": {
-    "commitMessage": "chore: Release v${version}"
+    "tagName": "v${version}",
+    "commitMessage": "chore: release v${version}"
   },
   "github": {
     "release": true,
