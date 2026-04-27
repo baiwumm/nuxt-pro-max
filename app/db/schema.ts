@@ -26,6 +26,8 @@ export const menu = pgTable('menu', {
   parentId: integer('parent_id'),
   // 排序
   sort: integer('sort').default(0).notNull(),
+  // 是否缓存
+  keepAlive: boolean('keep_alive').default(false).notNull(),
   // 是否启用
   enabled: boolean('enabled').default(true).notNull(),
   // 是否默认打开

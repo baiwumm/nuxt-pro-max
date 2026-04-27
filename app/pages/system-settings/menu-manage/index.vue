@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { TableColumn } from '@nuxt/ui'
-import type { Column } from '@tanstack/vue-table'
+import type { CellContext, Column } from '@tanstack/vue-table'
 import FormModal from './components/FormModal.vue'
 
 const UBadge = resolveComponent('UBadge')
@@ -102,28 +102,17 @@ const columns = computed<TableColumn<System.MenuTree>[]>(() => [
       return val ? h(UBadge, { variant: 'outline', color: 'neutral' }, () => row.getValue('badge')) : '-'
     },
   },
-  {
-    accessorKey: 'defaultOpen',
-    header: $t('pages.systemSettings.menuManage.defaultOpen'),
-    cell: ({ row }) => h(USwitch, {
+  ...['keepAlive', 'defaultOpen', 'enabled'].map(v => ({
+    accessorKey: v,
+    header: $t(`pages.systemSettings.menuManage.${v}`),
+    cell: ({ row }: CellContext<System.MenuTree, unknown>) => h(USwitch, {
       disabled: true,
       uncheckedIcon: 'lucide:x',
       checkedIcon: 'lucide:check',
-      modelValue: row.getValue('defaultOpen'),
+      modelValue: row.getValue(v),
       ui: { root: 'justify-center' },
     }),
-  },
-  {
-    accessorKey: 'enabled',
-    header: $t('pages.systemSettings.menuManage.enabled'),
-    cell: ({ row }) => h(USwitch, {
-      disabled: true,
-      uncheckedIcon: 'lucide:x',
-      checkedIcon: 'lucide:check',
-      modelValue: row.getValue('enabled'),
-      ui: { root: 'justify-center' },
-    }),
-  },
+  })),
   {
     accessorKey: 'sort',
     header: $t('common.sort'),

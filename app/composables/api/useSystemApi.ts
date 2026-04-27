@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-04-23 14:45:58
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-04-24 14:51:02
+ * @LastEditTime: 2026-04-27 09:23:48
  * @Description: 系统设置模块
  */
 export function useSystemApi() {
@@ -11,7 +11,7 @@ export function useSystemApi() {
   /**
    * @description: 查询菜单
    */
-  const getMenuList = (params?: { keyword: string }) =>
+  const getMenuList = (params?: Partial<{ keyword: string, enabled: boolean }>) =>
     get<System.MenuTree[]>('/system-settings/menu-manage', params)
 
   /**

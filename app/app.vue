@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import * as locales from '@nuxt/ui/locale'
+import { useMenuStore } from '@/stores/useMenuStore'
+
+const menuStore = useMenuStore()
 
 const { locale } = useI18n()
 
@@ -36,7 +39,7 @@ useFaviconFromTheme()
       <NuxtLoadingIndicator color="var(--ui-primary)" />
       <UMain>
         <NuxtLayout>
-          <NuxtPage />
+          <NuxtPage :keepalive="{ include: menuStore.keepAliveList }" />
         </NuxtLayout>
       </UMain>
     </UTheme>

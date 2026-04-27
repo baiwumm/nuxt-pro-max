@@ -110,6 +110,7 @@ export default defineI18nLocale(async () => {
           to: '路由地址',
           badge: '角标',
           defaultOpen: '默认展开',
+          keepAlive: '是否缓存',
           enabled: '是否启用',
           toReg: '必须以 / 或 http 开头',
           target: {

@@ -110,6 +110,7 @@ export default defineI18nLocale(async () => {
           to: 'Path',
           badge: 'Badge',
           defaultOpen: 'Default Open',
+          keepAlive: 'Keep Alive',
           enabled: 'Enabled',
           toReg: 'It must start with / or http',
           target: {

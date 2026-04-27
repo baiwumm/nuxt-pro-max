@@ -2,42 +2,53 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-04-23 09:05:48
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-04-24 15:15:22
+ * @LastEditTime: 2026-04-27 09:22:38
  * @Description: 查询菜单树
  */
-import { asc, desc, ilike, or } from 'drizzle-orm'
+import { and, asc, desc, eq, ilike, or } from 'drizzle-orm'
+import { z } from 'zod'
 import { db } from '@/db/drizzle'
 import { menu } from '@/db/schema'
 
 export default defineEventHandler(async (event) => {
   try {
-    const query = getQuery(event)
-    const keyword = query.keyword as string | undefined
-    let data
+    const schema = z.object({
+      keyword: z.string().optional(),
+      enabled: z
+        .enum(['true', 'false'])
+        .transform(val => val === 'true')
+        .optional()
+        .catch(undefined),
+    })
+    const { keyword, enabled } = schema.parse(getQuery(event))
+
+    const conditions = []
+
+    // keyword 模糊搜索
     if (keyword) {
-      data = await db
-        .select()
-        .from(menu)
-        .where(
-          or(
-            ilike(menu.label, `%${keyword}%`),
-            ilike(menu.to, `%${keyword}%`),
-          ),
-        )
-        .orderBy(
-          asc(menu.createdAt),
-          desc(menu.sort),
-        )
+      conditions.push(
+        or(
+          ilike(menu.label, `%${keyword}%`),
+          ilike(menu.to, `%${keyword}%`),
+        ),
+      )
     }
-    else {
-      data = await db
-        .select()
-        .from(menu)
-        .orderBy(
-          asc(menu.createdAt),
-          desc(menu.sort),
-        )
+
+    // enabled 精确筛选
+    if (enabled !== undefined) {
+      conditions.push(
+        eq(menu.enabled, enabled),
+      )
     }
+
+    const data = await db
+      .select()
+      .from(menu)
+      .where(conditions.length ? and(...conditions) : undefined)
+      .orderBy(
+        asc(menu.createdAt),
+        desc(menu.sort),
+      )
 
     return responseSuccess(convertFlatDataToTree(data))
   }

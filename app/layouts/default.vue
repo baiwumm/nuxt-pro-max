@@ -1,35 +1,25 @@
 <script setup lang="ts">
 import type { CommandPaletteGroup, CommandPaletteItem, NavigationMenuItem } from '@nuxt/ui'
 import pkg from '~~/package.json'
+import { useMenuStore } from '@/stores/useMenuStore'
 
-const { getMenuList } = useSystemApi()
-// 获取菜单列表
-const { data: menuTree, refresh } = useAsyncData(
-  'sidebar-menu',
-  async () => {
-    const res = await getMenuList()
-    return res.data ?? []
-  },
-  {
-    default: () => [],
-  },
-)
+const menuStore = useMenuStore()
 
 const open = ref(false)
 const route = useRoute()
 const { t } = useI18n()
 
 const menuItems = computed(() => {
-  const list = menuTree.value ?? []
+  const list = menuStore.menuTree ?? []
   return tMenu(list, t)
 })
 
 // 动态标题
 const title = computed(() => {
-  if (!menuTree) {
+  if (!menuStore.menuTree) {
     return ''
   }
-  const item = findMenuByPath(menuTree.value, route.path)
+  const item = findMenuByPath(menuStore.menuTree, route.path)
   return item?.label ? t(item.label) : ''
 })
 
@@ -57,7 +47,7 @@ const groups = computed(() => [{
 }] as CommandPaletteGroup<CommandPaletteItem>[])
 
 onMounted(async () => {
-  await refresh()
+  await menuStore.init()
 })
 </script>
 

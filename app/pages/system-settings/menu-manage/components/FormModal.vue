@@ -31,6 +31,7 @@ const formSchema = z.object({
       .optional(),
   ),
   badge: z.string().optional(),
+  keepAlive: z.boolean().default(false),
   enabled: z.boolean().default(true),
   defaultOpen: z.boolean().default(false),
   target: z.enum(MENU_TARGET.values).default(MENU_TARGET.SELF),
@@ -45,6 +46,7 @@ const INITIAL_STATE = Object.freeze<FormSchema>({
   icon: '',
   to: undefined,
   badge: undefined,
+  keepAlive: false,
   enabled: true,
   defaultOpen: false,
   target: MENU_TARGET.SELF,
@@ -228,13 +230,17 @@ const selectMenuItems = computed(() => flattenMenuTree(props.menuTree))
           </UInput>
         </UFormField>
 
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-3 gap-3">
+          <UFormField name="keepAlive">
+            <USwitch v-model="state.keepAlive" unchecked-icon="lucide:x" checked-icon="lucide:check" :label="$t('pages.systemSettings.menuManage.keepAlive')" />
+          </UFormField>
+
           <UFormField name="enabled">
-            <USwitch v-model="state.enabled" :label="$t('pages.systemSettings.menuManage.enabled')" />
+            <USwitch v-model="state.enabled" unchecked-icon="lucide:x" checked-icon="lucide:check" :label="$t('pages.systemSettings.menuManage.enabled')" />
           </UFormField>
 
           <UFormField name="defaultOpen">
-            <USwitch v-model="state.defaultOpen" :label="$t('pages.systemSettings.menuManage.defaultOpen')" />
+            <USwitch v-model="state.defaultOpen" unchecked-icon="lucide:x" checked-icon="lucide:check" :label="$t('pages.systemSettings.menuManage.defaultOpen')" />
           </UFormField>
         </div>
 

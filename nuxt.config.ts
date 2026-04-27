@@ -46,4 +46,7 @@ export default defineNuxtConfig({
       { code: 'zh-CN', name: '简体中文', file: 'zh-CN.ts' },
     ],
   },
+  experimental: {
+    normalizePageNames: true,
+  },
 })

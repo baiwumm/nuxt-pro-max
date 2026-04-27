@@ -50,6 +50,13 @@
       "when": 1777023992423,
       "tag": "0006_low_enchantress",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1777256279495,
+      "tag": "0007_mature_big_bertha",
+      "breakpoints": true
     }
   ]
 }
