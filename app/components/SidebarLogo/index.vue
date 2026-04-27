@@ -8,7 +8,7 @@ defineProps<{
 const items = computed<DropdownMenuItem[][]>(() => [
   [
     {
-      label: $t('components.SidebarLogo.title'),
+      label: $t('components.sidebarLogo.title'),
       icon: 'lucide:code',
     },
   ],

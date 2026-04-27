@@ -23,7 +23,7 @@ function getItems(tag: System.MenuTree | null): ContextMenuItem[][] {
   return [
     [
       {
-        label: '关闭',
+        label: $t('components.multipleTabs.closeTag'),
         icon: 'lucide:x',
         disabled: tag?.to === HOME_PATH,
         onSelect() {
@@ -35,7 +35,7 @@ function getItems(tag: System.MenuTree | null): ContextMenuItem[][] {
     ],
     [
       {
-        label: '关闭左侧',
+        label: $t('components.multipleTabs.closeLeft'),
         icon: 'lucide:arrow-left-to-line',
         disabled: tag?.to === HOME_PATH,
         onSelect() {
@@ -45,7 +45,7 @@ function getItems(tag: System.MenuTree | null): ContextMenuItem[][] {
         },
       },
       {
-        label: '关闭右侧',
+        label: $t('components.multipleTabs.closeRight'),
         icon: 'lucide:arrow-right-to-line',
         onSelect() {
           if (!tag)
@@ -56,7 +56,7 @@ function getItems(tag: System.MenuTree | null): ContextMenuItem[][] {
     ],
     [
       {
-        label: '关闭其他',
+        label: $t('components.multipleTabs.closeOthers'),
         icon: 'lucide:arrow-right-left',
         onSelect() {
           if (!tag)
@@ -78,6 +78,7 @@ function getItems(tag: System.MenuTree | null): ContextMenuItem[][] {
         :label="$t(homeTag.label)"
         :variant="tabStore.activePath === homeTag.to ? 'solid' : 'outline'"
         size="sm"
+        class="transition-colors"
         @click="homeTag?.to && router.push({ path: homeTag.to })"
       />
     </UContextMenu>
@@ -89,7 +90,7 @@ function getItems(tag: System.MenuTree | null): ContextMenuItem[][] {
         :initial="{ opacity: 0, scale: 0.9, filter: 'blur(8px)' }"
         :animate="{ opacity: 1, scale: 1, filter: 'blur(0px)' }"
         :exit="{ opacity: 0, scale: 0.9, filter: 'blur(8px)' }"
-        :transition="{ type: 'spring', stiffness: 500, damping: 30 }"
+        :transition="{ type: 'spring', stiffness: 500, damping: 30, duration: 0.75 }"
       >
         <UContextMenu :items="getItems(tag)">
           <UButton
@@ -97,6 +98,7 @@ function getItems(tag: System.MenuTree | null): ContextMenuItem[][] {
             :label="$t(tag.label)"
             :variant="tabStore.activePath === tag.to ? 'solid' : 'outline'"
             size="sm"
+            class="transition-colors"
             @click="tag?.to && router.push({ path: tag.to })"
           >
             <template #trailing>

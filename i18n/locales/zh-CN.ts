@@ -140,8 +140,14 @@ export default defineI18nLocale(async () => {
         locales: '语言',
         radius: '圆角',
       },
-      SidebarLogo: {
+      sidebarLogo: {
         title: '技术栈',
+      },
+      multipleTabs: {
+        closeTag: '关闭',
+        closeLeft: '关闭左侧',
+        closeRight: '关闭右侧',
+        closeOthers: '关闭其他',
       },
     },
     layout: {

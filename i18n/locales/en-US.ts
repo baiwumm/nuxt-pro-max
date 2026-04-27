@@ -140,8 +140,14 @@ export default defineI18nLocale(async () => {
         locales: 'Locales',
         radius: 'Radius',
       },
-      SidebarLogo: {
+      sidebarLogo: {
         title: 'Technical stack',
+      },
+      multipleTabs: {
+        closeTag: 'Close',
+        closeLeft: 'Close Left',
+        closeRight: 'Close Right',
+        closeOthers: 'Close Others',
       },
     },
     layout: {
