@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.2](https://github.com/baiwumm/nuxt-pro-max/compare/v1.3.1...v1.3.2) (2026-04-28)
+
+### ✨ Features | 新功能
+
+* 动态设置项目标题 ([d6d04ba](https://github.com/baiwumm/nuxt-pro-max/commit/d6d04bae5ccc6b9e174bf8aa48b07c9c5156b51c))
+* **MultipleTabs:** 完善国际化配置 ([f3c7ec3](https://github.com/baiwumm/nuxt-pro-max/commit/f3c7ec31ddd9273b8541be9cb0151201dbc2fb4d))
+* **RouteTransition:** 添加路由过渡动画配置 ([094d332](https://github.com/baiwumm/nuxt-pro-max/commit/094d3326815e9905d8bfc832b18feab7424f8d50))
+
 ## [1.3.1](https://github.com/baiwumm/nuxt-pro-max/compare/v1.3.0...v1.3.1) (2026-04-27)
 
 ### ✨ Features | 新功能
