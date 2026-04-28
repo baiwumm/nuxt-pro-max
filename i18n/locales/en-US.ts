@@ -139,6 +139,7 @@ export default defineI18nLocale(async () => {
         colorMode: 'ColorMode',
         locales: 'Locales',
         radius: 'Radius',
+        transition: 'Transition',
       },
       sidebarLogo: {
         title: 'Technical stack',
@@ -179,6 +180,18 @@ export default defineI18nLocale(async () => {
       select: 'Please select',
       required: 'Must not be empty',
       action: 'Action',
+    },
+    routeTransition: {
+      default: 'Default',
+      blurSlide: 'Blur Slide',
+      fade: 'Fade',
+      blurFade: 'Blur',
+      slideFade: 'Slide',
+      zoom: 'Zoom',
+      swing: 'Swing',
+      flip: 'Flip',
+      slideUp: 'Slide Up',
+      diagonal: 'Diagonal',
     },
   }
 })

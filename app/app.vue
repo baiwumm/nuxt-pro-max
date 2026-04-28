@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import * as locales from '@nuxt/ui/locale'
-import { useMenuStore } from '@/stores/useMenuStore'
 
 const menuStore = useMenuStore()
+const appStore = useAppStore()
 
 const { locale } = useI18n()
 
@@ -39,21 +39,12 @@ useFaviconFromTheme()
       <NuxtLoadingIndicator color="var(--ui-primary)" />
       <UMain>
         <NuxtLayout>
-          <NuxtPage :keepalive="{ include: menuStore.keepAliveList }" />
+          <NuxtPage
+            :transition="{ name: appStore.transition, mode: 'out-in' }"
+            :keepalive="{ include: menuStore.keepAliveList }"
+          />
         </NuxtLayout>
       </UMain>
     </UTheme>
   </UApp>
 </template>
-
-<style>
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.4s;
-}
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-  filter: blur(1rem);
-}
-</style>

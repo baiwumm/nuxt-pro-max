@@ -1,0 +1,169 @@
+/* ========================================
+   全局统一动画参数（可调）
+   ======================================== */
+:root {
+  --view-duration: 0.5s;
+}
+
+/* ========================================
+   默认：模糊渐变
+   default
+   ======================================== */
+.default-enter-active,
+.default-leave-active {
+  transition: all var(--view-duration);
+}
+
+.default-enter-from,.default-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+
+
+/* ========================================
+   模糊 + 左右滑动
+   blur-slide
+   ======================================== */
+.blur-slide-enter-active,
+.blur-slide-leave-active {
+  transition: all var(--view-duration);
+}
+
+.blur-slide-enter-from {
+  filter: blur(8px);
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.blur-slide-leave-to {
+  filter: blur(8px);
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+
+/* ========================================
+   淡入淡出（fade）
+   ======================================== */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--view-duration);
+}
+
+.fade-enter-from,.fade-leave-to {
+  opacity: 0;
+}
+
+
+/* ========================================
+   模糊淡入（blur-fade）
+   ======================================== */
+.blur-fade-enter-active,
+.blur-fade-leave-active {
+  transition: all var(--view-duration);
+}
+
+.blur-fade-enter-from,.blur-fade-leave-to {
+  filter: blur(8px);
+  opacity: 0;
+}
+
+
+/* ========================================
+   右进左出（slide-fade）
+   ======================================== */
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all var(--view-duration);
+}
+
+.slide-fade-enter-from {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-fade-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+
+/* ========================================
+   缩放（zoom）
+   ======================================== */
+.zoom-enter-active,
+.zoom-leave-active {
+  transition: all var(--view-duration);
+}
+
+.zoom-enter-from,.zoom-leave-to {
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+
+/* ========================================
+   摆动（swing）
+   ======================================== */
+.swing-enter-active,
+.swing-leave-active {
+  transition: all var(--view-duration);
+}
+
+.swing-enter-from {
+  transform: rotate(-45deg) translateX(-20px);
+  opacity: 0;
+}
+
+.swing-leave-to {
+  transform: rotate(45deg) translateX(20px);
+  opacity: 0;
+}
+
+
+/* ========================================
+   翻转（flip）
+   ======================================== */
+.flip-enter-active,
+.flip-leave-active {
+  transition: all var(--view-duration);
+  transform-style: preserve-3d;
+}
+
+.flip-enter-from,.flip-leave-to {
+  transform: rotateY(-90deg);
+  opacity: 0;
+}
+
+
+/* ========================================
+   向上滑动（slide-up）
+   ======================================== */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all var(--view-duration);
+}
+
+.slide-up-enter-from {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.slide-up-leave-to {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+
+/* ========================================
+   对角线（diagonal）
+   ======================================== */
+.diagonal-enter-active,
+.diagonal-leave-active {
+  transition: all var(--view-duration);
+}
+
+.diagonal-enter-from,.diagonal-leave-to {
+  transform: translate(-100%, -100%) rotate(-45deg);
+  opacity: 0;
+}

@@ -139,6 +139,7 @@ export default defineI18nLocale(async () => {
         colorMode: '主题模式',
         locales: '语言',
         radius: '圆角',
+        transition: '路由动画',
       },
       sidebarLogo: {
         title: '技术栈',
@@ -179,6 +180,18 @@ export default defineI18nLocale(async () => {
       select: '请选择',
       required: '不能为空',
       action: '操作',
+    },
+    routeTransition: {
+      default: '默认(模糊渐变)',
+      blurSlide: '左右模糊渐变',
+      fade: '淡入淡出',
+      blurFade: '模糊渐入',
+      slideFade: '滑动渐入',
+      zoom: '缩放渐入',
+      swing: '左右摆动',
+      flip: '翻转效果',
+      slideUp: '向上滑动渐入',
+      diagonal: '对角渐入',
     },
   }
 })

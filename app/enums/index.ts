@@ -49,3 +49,68 @@ export const MENU_TARGET = Enum({
   SELF: { value: '_self', label: 'pages.systemSettings.menuManage.target.self' },
   BLANK: { value: '_blank', label: 'pages.systemSettings.menuManage.target.blank' },
 })
+
+/**
+ * @description: 路由动画
+ */
+export const ROUTE_TRANSITION = Enum({
+  DEFAULT: {
+    value: 'default',
+    label: 'routeTransition.default',
+    icon: 'lucide:activity', // 默认状态 / 通用动画
+  },
+
+  BLUR_SLIDE: {
+    value: 'blur-slide',
+    label: 'routeTransition.blurSlide',
+    icon: 'lucide:move-right', // 有移动 + 流动感（带模糊滑动）
+  },
+
+  FADE: {
+    value: 'fade',
+    label: 'routeTransition.fade',
+    icon: 'lucide:circle', // 渐变、淡入淡出
+  },
+
+  BLUR_FADE: {
+    value: 'blur-fade',
+    label: 'routeTransition.blurFade',
+    icon: 'lucide:focus', // 聚焦（从模糊到清晰）
+  },
+
+  SLIDE_FADE: {
+    value: 'slide-fade',
+    label: 'routeTransition.slideFade',
+    icon: 'lucide:arrow-right-left', // 左右切换（滑动）
+  },
+
+  ZOOM: {
+    value: 'zoom',
+    label: 'routeTransition.zoom',
+    icon: 'lucide:maximize', // 放大（缩放动画）
+  },
+
+  SWING: {
+    value: 'swing',
+    label: 'routeTransition.swing',
+    icon: 'lucide:rotate-ccw', // 摆动 / 旋转感
+  },
+
+  FLIP: {
+    value: 'flip',
+    label: 'routeTransition.flip',
+    icon: 'lucide:flip-horizontal', // 翻转（很贴）
+  },
+
+  SLIDE_UP: {
+    value: 'slide-up',
+    label: 'routeTransition.slideUp',
+    icon: 'lucide:arrow-up', // 向上滑
+  },
+
+  DIAGONAL: {
+    value: 'diagonal',
+    label: 'routeTransition.diagonal',
+    icon: 'lucide:arrow-up-right', // 对角线移动
+  },
+})

@@ -16,7 +16,6 @@ export default defineNuxtConfig({
         },
       ],
     },
-    pageTransition: { name: 'page', mode: 'out-in' },
   },
   modules: [
     '@nuxt/ui',
@@ -27,7 +26,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vercel/analytics',
   ],
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/transition.css'],
   ui: {
     fonts: false,
   },

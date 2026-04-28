@@ -2,11 +2,13 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-03-20 09:23:39
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-04-24 16:44:45
+ * @LastEditTime: 2026-04-28 09:31:52
  * @Description: 全局状态
  */
 import { defineStore } from 'pinia'
-import { COLOR_MODES } from '@/enums'
+import { COLOR_MODES, ROUTE_TRANSITION } from '@/enums'
+
+type Transition = typeof ROUTE_TRANSITION.valueType
 
 export const useAppStore = defineStore('app-store', () => {
   const appConfig = useAppConfig()
@@ -27,6 +29,12 @@ export const useAppStore = defineStore('app-store', () => {
     radius.value = val
   }
 
+  // 路由动画
+  const transition = ref<Transition>(ROUTE_TRANSITION.DEFAULT)
+  const setTransition = (val: Transition) => {
+    transition.value = val
+  }
+
   // 是否暗色主题
   const isDark = computed(() => colorMode.value === COLOR_MODES.DARK)
   return {
@@ -37,6 +45,8 @@ export const useAppStore = defineStore('app-store', () => {
     radius,
     setRadius,
     isDark,
+    transition,
+    setTransition,
   }
 }, {
   // 开启持久化

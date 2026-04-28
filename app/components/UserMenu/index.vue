@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 import pkg from '~~/package.json'
-import { COLOR_MODES, I18N_LOCALES } from '@/enums'
+import { COLOR_MODES, I18N_LOCALES, ROUTE_TRANSITION } from '@/enums'
 import { getColor, getPrimaryColors } from '@/utils/constants'
 
 defineProps<{
@@ -21,8 +21,8 @@ const router = useRouter()
 const appStore = useAppStore()
 const { $authClient } = useNuxtApp()
 
-const { primaryColor, blackAsPrimary, radius } = storeToRefs(appStore)
-const { setPrimaryColor, setBlackAsPrimary, setRadius } = appStore
+const { primaryColor, blackAsPrimary, radius, transition } = storeToRefs(appStore)
+const { setPrimaryColor, setBlackAsPrimary, setRadius, setTransition } = appStore
 
 const items = computed(() => ([
   [{
@@ -100,6 +100,19 @@ const items = computed(() => ([
       onSelect(e: Event) {
         e.preventDefault()
         setRadius(r)
+      },
+    })),
+  }, {
+    label: $t('components.themePicker.transition'),
+    icon: 'lucide:route',
+    children: ROUTE_TRANSITION.items.map(({ value, label, raw }) => ({
+      label: $t(label),
+      icon: raw.icon,
+      type: 'checkbox',
+      checked: transition.value === value,
+      onSelect(e: Event) {
+        e.preventDefault()
+        setTransition(value)
       },
     })),
   }],

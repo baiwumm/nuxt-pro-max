@@ -20,6 +20,7 @@ const open = ref(false)
         <ThemePickerColorMode />
         <ThemePickerLocales />
         <ThemePickerRadius />
+        <ThemePickerRouteTransition />
       </div>
     </template>
   </UPopover>
