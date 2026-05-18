@@ -196,14 +196,18 @@ const categories: Record<string, BulletLegendItemInterface> = {
 </script>
 
 <template>
-  <UCard :title="$t('pages.playground.charts.ganttChart.title')" :description="$t('pages.playground.charts.ganttChart.description', { year: dayjs().year() })" :ui="{ body: 'relative' }">
+  <UCard
+    :title="$t('pages.playground.charts.ganttChart.title')"
+    :description="$t('pages.playground.charts.ganttChart.description', { year: dayjs().year() })"
+    :ui="{ body: 'relative', title: 'leading-[32px]' }"
+  >
     <GanttChart
       :key="colorMode.value"
       :data="data"
       show-labels
       :label-width="120"
       :x="x"
-      :height="height + 32"
+      :height
       :length
       :type="type"
       x-grid-line
