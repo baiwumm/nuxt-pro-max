@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.6.1](https://github.com/baiwumm/better-nuxt/compare/v1.6.0...v1.6.1) (2026-05-18)
+
+### ✨ Features | 新功能
+
+* **Charts:** 添加滚动动画 ([49fa16f](https://github.com/baiwumm/better-nuxt/commit/49fa16f7c3bf163a771395dc244e4752e3abc364))
+* **Charts:** 新增 BubbleChart 气泡图 ([97c6f04](https://github.com/baiwumm/better-nuxt/commit/97c6f0447559b116cffc61b87678f979180900cd))
+* **Charts:** 新增 DountChart 圆环图 ([70cd92d](https://github.com/baiwumm/better-nuxt/commit/70cd92dbe1954543621e0a1f64af13ec152e3bf1))
+* **Charts:** 新增 GanttChart 甘特图 ([df43cb0](https://github.com/baiwumm/better-nuxt/commit/df43cb0ddcf68fd1abe9513355d76f5f5124db9b))
+* **charts:** 新增《图表》页面和《面积图》 ([179a8b9](https://github.com/baiwumm/better-nuxt/commit/179a8b95c56b4596b80b55996a550f4de2d3dc9a))
+* **charts:** 新增《柱状图》页面 ([4975579](https://github.com/baiwumm/better-nuxt/commit/4975579f1da4fdb07e25f1e8998cb71f870412a8))
+* **layout:** 添加 menu Loading ([5296bc2](https://github.com/baiwumm/better-nuxt/commit/5296bc2c1ecbfb6ff74e338fad3788818a504d65))
+
+### ⚡ Performance Improvements | 性能优化
+
+* **menuStore:** 优化菜单状态的逻辑 ([add275b](https://github.com/baiwumm/better-nuxt/commit/add275bba2b66c26690d5986894ebf64b491c728))
+
+### 🔧 Continuous Integration | CI 配置
+
+* 安装 nuxt-charts 包 ([1474a7b](https://github.com/baiwumm/better-nuxt/commit/1474a7bb1306b55bf58c0b9d38f663a894feec19))
+* 安装和配置 '@vercel/speed-insights' ([f3c0539](https://github.com/baiwumm/better-nuxt/commit/f3c0539548e47261b37574fa86ad19f63d61aac5))
+
 ## [1.6.0](https://github.com/baiwumm/better-nuxt/compare/v1.5.3...v1.6.0) (2026-05-15)
 
 ### ✨ Features | 新功能
