@@ -1,6 +1,6 @@
 :root {
   /* Tooltip - Default padding */
-  --vis-tooltip-padding: 0 0 .5rem 0 !important;
+  --vis-tooltip-padding: .25rem !important;
 
   /* Tooltip - Title */
   --vis-tooltip-title-color: var(--ui-text) !important;

@@ -84,7 +84,7 @@ const description = computed(() => $t('pages.playground.charts.languageIndex'))
       :x-formatter="(tick: number) => monthNames[tick - 1] ?? String(tick)"
     >
       <template #tooltip="{ values }">
-        <div class="p-2 pb-0">
+        <div class="p-2">
           {{ values ? `${values.title} ${monthNames[values.month - 1]}指数: ${values.languageIndex}` : '' }}
         </div>
       </template>

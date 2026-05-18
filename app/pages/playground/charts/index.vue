@@ -3,6 +3,7 @@ import AreaChartCard from './components/AreaChartCard.vue'
 import BarChartCard from './components/BarChartCard.vue'
 import BubbleChartCard from './components/BubbleChartCard.vue'
 import DountChartCard from './components/DountChartCard.vue'
+import GanttChartCard from './components/ganttChartCard.vue'
 import LineChartCard from './components/LineChartCard.vue'
 
 const categories = computed<Record<string, BulletLegendItemInterface>>(() => ({
@@ -46,6 +47,7 @@ const { height } = useResponsiveHeight({
       <LineChartCard :days="10" :height :categories />
       <DountChartCard :days="5" :height />
       <BubbleChartCard :days="5" :height />
+      <GanttChartCard :height />
     </div>
   </div>
 </template>
