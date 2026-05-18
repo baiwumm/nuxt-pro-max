@@ -42,7 +42,7 @@ const categories = computed<Record<string, BulletLegendItemInterface>>(() => ({
   },
 }))
 
-const description = computed(() => $t('pages.playground.charts.donutChart.description'))
+const description = computed(() => $t('pages.playground.charts.languageIndex'))
 </script>
 
 <template>
@@ -57,13 +57,8 @@ const description = computed(() => $t('pages.playground.charts.donutChart.descri
       :arc-width="20"
       :legend-style="{ marginTop: '10px' }"
     >
-      <div class="text-center">
-        <div class="font-semibold">
-          TIOBE Index
-        </div>
-        <div class="text-muted">
-          {{ description }}
-        </div>
+      <div class="text-center font-semibold">
+        TIOBE Index
       </div>
     </DonutChart>
     <template #title>

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import AreaChartCard from './components/AreaChartCard.vue'
 import BarChartCard from './components/BarChartCard.vue'
+import BubbleChartCard from './components/BubbleChartCard.vue'
 import DountChartCard from './components/DountChartCard.vue'
 import LineChartCard from './components/LineChartCard.vue'
 
@@ -44,6 +45,7 @@ const { height } = useResponsiveHeight({
       <BarChartCard :days="5" :height :categories />
       <LineChartCard :days="10" :height :categories />
       <DountChartCard :days="5" :height />
+      <BubbleChartCard :days="5" :height />
     </div>
   </div>
 </template>
