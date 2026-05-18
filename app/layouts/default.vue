@@ -18,6 +18,13 @@ const menuItems = computed(() => {
   return tMenu(list, t)
 })
 
+const skeletonWidths = computed(() => {
+  return Array.from({ length: 6 }, () => {
+    const widths = ['w-[70%]', 'w-[75%]', 'w-[80%]', 'w-[85%]', 'w-[90%]']
+    return widths[Math.floor(Math.random() * widths.length)]
+  })
+})
+
 // 动态标题
 const title = computed(() => {
   if (!menuStore.menuTree) {
@@ -110,7 +117,17 @@ onMounted(() => {
       <template #default="{ collapsed }">
         <UDashboardSearchButton :collapsed class="bg-transparent ring-default" />
 
+        <div v-if="menuStore.loading" class="grid gap-2">
+          <USkeleton
+            v-for="(width, index) in skeletonWidths"
+            :key="index"
+            class="h-4"
+            :class="width"
+          />
+        </div>
+
         <UNavigationMenu
+          v-else
           :collapsed
           :items="menuItems as NavigationMenuItem[]"
           orientation="vertical"
