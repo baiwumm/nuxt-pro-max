@@ -10,13 +10,8 @@ const tabStore = useTabStore()
 
 const open = ref(false)
 const route = useRoute()
-const { t } = useI18n()
+const { menuItems } = useMenu()
 const appScrollContainer = useAppScrollContainer()
-
-const menuItems = computed(() => {
-  const list = menuStore.menuTree ?? []
-  return tMenu(list, t)
-})
 
 const skeletonWidths = computed(() => {
   return Array.from({ length: 6 }, () => {
@@ -27,11 +22,11 @@ const skeletonWidths = computed(() => {
 
 // 动态标题
 const title = computed(() => {
-  if (!menuStore.menuTree) {
+  if (!menuStore.menuPathMap) {
     return ''
   }
-  const item = findMenuByPath(menuStore.menuTree, route.path)
-  return item?.label ? t(item.label) : ''
+  const menu = menuStore.menuPathMap.get(route.path)
+  return menu?.label ? $t(menu.label) : ''
 })
 
 const groups = computed(() => [{
@@ -70,7 +65,7 @@ watch(
     if (path === '/')
       return
 
-    const menu = findMenuByPath(menuStore.menuTree, path)
+    const menu = menuStore.menuPathMap.get(path)
 
     if (!menu)
       return

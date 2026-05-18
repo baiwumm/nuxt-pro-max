@@ -2,7 +2,7 @@
  * @Author: 白雾茫茫丶<baiwumm.com>
  * @Date: 2026-04-27 11:06:21
  * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2026-05-06 15:51:24
+ * @LastEditTime: 2026-05-18 10:29:12
  * @Description: 路由菜单
  */
 import { defineStore } from 'pinia'
@@ -33,6 +33,26 @@ export const useMenuStore = defineStore('menu-store', () => {
       return
     await fetchMenuTree()
   }
+
+  // 生成扁平化的菜单路径映射，方便后续根据路径获取菜单项
+  const menuPathMap = computed(() => {
+    const map = new Map<string, MenuTree>()
+
+    function travel(list: MenuTree[]) {
+      list.forEach((item) => {
+        if (item.to) {
+          map.set(item.to, item)
+        }
+        if (item.children?.length) {
+          travel(item.children)
+        }
+      })
+    }
+
+    travel(menuTree.value)
+
+    return map
+  })
 
   // =========================
   // 🧠 keepAlive 逻辑（核心）
@@ -85,5 +105,6 @@ export const useMenuStore = defineStore('menu-store', () => {
     init,
     keepAliveNames,
     keepAliveList,
+    menuPathMap,
   }
 })

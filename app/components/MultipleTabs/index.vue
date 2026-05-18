@@ -12,11 +12,11 @@ const router = useRouter()
 
 // 首页固定展示
 const homeTag = computed(() => {
-  if (!menuStore.menuTree) {
+  if (!menuStore.menuPathMap) {
     return null
   }
-  const item = findMenuByPath(menuStore.menuTree, HOME_PATH)
-  return item || null
+  const menu = menuStore.menuPathMap.get(HOME_PATH)
+  return menu || null
 })
 
 function getItems(tag: MenuTree | null): ContextMenuItem[][] {
