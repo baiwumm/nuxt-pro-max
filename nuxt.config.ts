@@ -40,6 +40,8 @@ export default defineNuxtConfig({
     '@norbiros/nuxt-auto-form',
     '@vercel/speed-insights',
     'nuxt-charts',
+    'nuxt-easy-lightbox',
+    '@nuxt/image',
   ],
   css: ['~/assets/css/main.css'],
   ui: {
